@@ -1,6 +1,10 @@
 import Foundation
 import Alamofire
 
+public protocol RequestSender: class {
+    
+}
+
 // MARK: - DataProvider
 
 public protocol DataProvider: class {
@@ -55,22 +59,23 @@ public final class ApiClientImpl: ApiClient {
     private let responseParser: ResponseParser
     
     // MARK: - Dependencies
-    private let sessionStorage: SessionStorage
     private var loggerService: LoggerService?
     private let uploader: Uploader
+    private let requestRetrier: RequestRetrier
     
     // MARK: - Init
     init(requestBuilder: RequestBuilder,
-         sessionStorage: SessionStorage,
          responseParser: ResponseParser,
          loggerService: LoggerService?,
-         uploader: Uploader)
+         uploader: Uploader,
+         requestRetrier: RequestRetrier
+         )
     {
         self.requestBuilder = requestBuilder
-        self.sessionStorage = sessionStorage
         self.responseParser = responseParser
         self.loggerService = loggerService
         self.uploader = uploader
+        self.requestRetrier = requestRetrier
     }
     
     // MARK: - ApiClient
@@ -97,7 +102,7 @@ public final class ApiClientImpl: ApiClient {
         completion: @escaping DataResult<R.Method.Result, RequestError<R.Method.ErrorResponse>>.Completion)
         -> Operation?
     {
-        let preparedRequestResult = requestBuilder.uploadRequest(from: request)
+        let preparedRequestResult = requestBuilder.buildUploadRequest(from: request)
         
         switch preparedRequestResult {
         case .error(let error):
@@ -131,15 +136,13 @@ public final class ApiClientImpl: ApiClient {
         networkDataTask: NetworkDataTaskImpl,
         request: R,
         completion: @escaping DataResult<R.Method.Result, RequestError<R.Method.ErrorResponse>>.Completion) {
-        let preparedRequestResult = requestBuilder.apiRequest(from: request)
+        let preparedRequestResult = requestBuilder.buildUrlRequest(from: request)
         
         switch preparedRequestResult {
         case .error(let error):
             completion(.error(error))
             
         case .data(let urlRequest):
-            let requestSession = sessionStorage.sessionId
-            
             guard !networkDataTask.isCancelled else { return }
             
             networkDataTask.request = send(request, urlRequest: urlRequest) { result in
@@ -150,23 +153,14 @@ public final class ApiClientImpl: ApiClient {
                 }
                 
                 result.onError { [weak self] networkRequestError in
-                    DispatchQueue.dispatchToMain { [weak self] in
-                        if networkRequestError.isUnauthenticated {
-                            // Check if the session was refreshed before response was received
-                            if let currentSession = self?.sessionStorage.sessionId, requestSession != currentSession {
-                                
-                                // Try to resend request with updated session
-                                if !networkDataTask.isCancelled {
-                                    networkDataTask.request = self?.send(
-                                        request,
-                                        urlRequest: urlRequest,
-                                        completion: completion
-                                    )
-                                }
-                            } else {
-                                completion(.error(networkRequestError))
-                            }
-                        } else {
+                    if self?.requestRetrier.shouldRetry(policy: request.retryPolicy, request: request) == true {
+                        networkDataTask.request = self?.send(
+                            request,
+                            urlRequest: urlRequest,
+                            completion: completion
+                        )
+                    } else {
+                        DispatchQueue.dispatchToMain {
                             completion(.error(networkRequestError))
                         }
                     }

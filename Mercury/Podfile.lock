@@ -1,24 +1,32 @@
 PODS:
   - Alamofire (4.7.3)
   - KeychainAccess (3.1.1)
+  - Nimble (7.3.0)
+  - Quick (1.3.1)
   - Unbox (2.5.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7.0)
   - KeychainAccess (~> 3.1.0)
+  - Nimble
+  - Quick
   - Unbox (~> 2.5.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - KeychainAccess
+    - Nimble
+    - Quick
     - Unbox
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   KeychainAccess: 7bd430028059754a3debab3cfc0bd1fc7fb85df3
+  Nimble: c8d6a1f463701921c46de965c673e13cafa09196
+  Quick: d17304d58d0d169dd0bd1c6e5c28e3318de32a1a
   Unbox: 30e437e6151a6de16139375fd4e8dd9a664cfbf7
 
-PODFILE CHECKSUM: f6f20f0a704745c86abadb9da59549af848dc29d
+PODFILE CHECKSUM: d2c83ac8a6a4bc521b2e5c3b6d3aedde64f3005c
 
 COCOAPODS: 1.5.3

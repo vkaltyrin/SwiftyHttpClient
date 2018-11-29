@@ -4,7 +4,6 @@ public protocol ApiMethod {
     associatedtype Result
     associatedtype ErrorResponse
     
-    // Do not override prefix for standard api requests
     var pathPrefix: String { get }
     
     var httpMethod: HttpMethod { get }

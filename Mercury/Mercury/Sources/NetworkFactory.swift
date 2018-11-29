@@ -73,17 +73,12 @@ public final class NetworkFactoryImpl: NetworkFactory {
     
     private func requestBuilder(sessionStorage: SessionStorage) -> RequestBuilder {
         return RequestBuilderImpl(
-            baseUrl: baseURL,
-            sessionStorage: sessionStorage,
-            commonRequestHeadersProvider: commonRequestHeadersProvider()
+            commonHeadersProvider: commonHeadersProvider()
         )
     }
     
-    private func commonRequestHeadersProvider() -> CommonRequestHeadersProvider {
-        return CommonRequestHeadersProviderImpl(
-            xSessionHeaderProvider: xSessionHeaderProvider(),
-            xDateHeaderProvider: xDateHeaderProvider()
-        )
+    private func commonHeadersProvider() -> CommonHeadersProvider {
+        return CommonHeadersProviderImpl()
     }
     
     private func xSessionHeaderProvider() -> XSessionHeaderProvider {

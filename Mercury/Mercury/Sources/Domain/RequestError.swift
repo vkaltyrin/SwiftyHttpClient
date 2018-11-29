@@ -1,7 +1,12 @@
+public enum RequestBuilderError {
+    case cantInitializeUrl
+    case cantSerializeHttpBody
+}
+
 public enum ApiClientError {
     case parsingFailure
-    case attemptToSendAuthorizedRequestWithNoSession
-    case cantBuildUrlFromGivenRequest
+    case attemptToSendAuthorizedRequest
+    case cantBuildUrl(RequestBuilderError)
 }
 
 public enum UploadMultipartError {

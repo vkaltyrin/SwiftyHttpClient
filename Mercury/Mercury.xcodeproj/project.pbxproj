@@ -52,7 +52,7 @@
 		8C38162921B021CA00F2CC17 /* ResponseConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815EF21B021CA00F2CC17 /* ResponseConverter.swift */; };
 		8C38162A21B021CA00F2CC17 /* ErrorConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815F021B021CA00F2CC17 /* ErrorConverter.swift */; };
 		8C38162B21B021CA00F2CC17 /* ResponseConverterOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815F121B021CA00F2CC17 /* ResponseConverterOf.swift */; };
-		8C38162C21B021CA00F2CC17 /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815F221B021CA00F2CC17 /* RequestBuilder.swift */; };
+		8C38162C21B021CA00F2CC17 /* RequestBuilderImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815F221B021CA00F2CC17 /* RequestBuilderImpl.swift */; };
 		8C38162D21B021CA00F2CC17 /* UserSessionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815F421B021CA00F2CC17 /* UserSessionProvider.swift */; };
 		8C38162E21B021CA00F2CC17 /* KeychainConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815F521B021CA00F2CC17 /* KeychainConstants.swift */; };
 		8C38162F21B021CA00F2CC17 /* KeychainSensitiveDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815F621B021CA00F2CC17 /* KeychainSensitiveDataProvider.swift */; };
@@ -64,6 +64,16 @@
 		8C38163521B021CA00F2CC17 /* CommonRequestHeadersProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815FE21B021CA00F2CC17 /* CommonRequestHeadersProvider.swift */; };
 		8C38163621B021CA00F2CC17 /* XDateHeaderProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C38160121B021CA00F2CC17 /* XDateHeaderProvider.swift */; };
 		8C38163721B021CA00F2CC17 /* XSessionHeaderProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C38160321B021CA00F2CC17 /* XSessionHeaderProvider.swift */; };
+		8C38163C21B024A900F2CC17 /* HttpMethod+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C38163B21B024A900F2CC17 /* HttpMethod+Alamofire.swift */; };
+		8C38164021B0287000F2CC17 /* RequestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C38163F21B0287000F2CC17 /* RequestExtensions.swift */; };
+		8C38164221B028A700F2CC17 /* RequestCachePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C38164121B028A700F2CC17 /* RequestCachePolicy.swift */; };
+		8C38164421B028C400F2CC17 /* UploadMultipartFormDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C38164321B028C400F2CC17 /* UploadMultipartFormDataRequest.swift */; };
+		8C38164621B028E200F2CC17 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C38164521B028E200F2CC17 /* StringExtensions.swift */; };
+		8C38164921B02AA400F2CC17 /* CommonHeadersProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C38164821B02AA400F2CC17 /* CommonHeadersProvider.swift */; };
+		8C38164B21B03F5700F2CC17 /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C38164A21B03F5700F2CC17 /* RequestBuilder.swift */; };
+		8C38164D21B03F7B00F2CC17 /* AuthorizationStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C38164C21B03F7B00F2CC17 /* AuthorizationStatusProvider.swift */; };
+		8C38164F21B047AF00F2CC17 /* RequestRetrierImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C38164E21B047AF00F2CC17 /* RequestRetrierImpl.swift */; };
+		8C38165121B047D200F2CC17 /* RequestRetrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C38165021B047D200F2CC17 /* RequestRetrier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,7 +135,7 @@
 		8C3815EF21B021CA00F2CC17 /* ResponseConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseConverter.swift; sourceTree = "<group>"; };
 		8C3815F021B021CA00F2CC17 /* ErrorConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorConverter.swift; sourceTree = "<group>"; };
 		8C3815F121B021CA00F2CC17 /* ResponseConverterOf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseConverterOf.swift; sourceTree = "<group>"; };
-		8C3815F221B021CA00F2CC17 /* RequestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
+		8C3815F221B021CA00F2CC17 /* RequestBuilderImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestBuilderImpl.swift; sourceTree = "<group>"; };
 		8C3815F421B021CA00F2CC17 /* UserSessionProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSessionProvider.swift; sourceTree = "<group>"; };
 		8C3815F521B021CA00F2CC17 /* KeychainConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainConstants.swift; sourceTree = "<group>"; };
 		8C3815F621B021CA00F2CC17 /* KeychainSensitiveDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainSensitiveDataProvider.swift; sourceTree = "<group>"; };
@@ -137,6 +147,16 @@
 		8C3815FE21B021CA00F2CC17 /* CommonRequestHeadersProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonRequestHeadersProvider.swift; sourceTree = "<group>"; };
 		8C38160121B021CA00F2CC17 /* XDateHeaderProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XDateHeaderProvider.swift; sourceTree = "<group>"; };
 		8C38160321B021CA00F2CC17 /* XSessionHeaderProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XSessionHeaderProvider.swift; sourceTree = "<group>"; };
+		8C38163B21B024A900F2CC17 /* HttpMethod+Alamofire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HttpMethod+Alamofire.swift"; sourceTree = "<group>"; };
+		8C38163F21B0287000F2CC17 /* RequestExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestExtensions.swift; sourceTree = "<group>"; };
+		8C38164121B028A700F2CC17 /* RequestCachePolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestCachePolicy.swift; sourceTree = "<group>"; };
+		8C38164321B028C400F2CC17 /* UploadMultipartFormDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadMultipartFormDataRequest.swift; sourceTree = "<group>"; };
+		8C38164521B028E200F2CC17 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		8C38164821B02AA400F2CC17 /* CommonHeadersProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonHeadersProvider.swift; sourceTree = "<group>"; };
+		8C38164A21B03F5700F2CC17 /* RequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
+		8C38164C21B03F7B00F2CC17 /* AuthorizationStatusProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationStatusProvider.swift; sourceTree = "<group>"; };
+		8C38164E21B047AF00F2CC17 /* RequestRetrierImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRetrierImpl.swift; sourceTree = "<group>"; };
+		8C38165021B047D200F2CC17 /* RequestRetrier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRetrier.swift; sourceTree = "<group>"; };
 		BF2062ED3FDEC418917E5FD3 /* Pods-Mercury.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mercury.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mercury/Pods-Mercury.debug.xcconfig"; sourceTree = "<group>"; };
 		CF7002A95532526CCD517984 /* Pods-MercuryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MercuryTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MercuryTests/Pods-MercuryTests.release.xcconfig"; sourceTree = "<group>"; };
 		D8EF5859D360EB41B5C25068 /* Pods_MercuryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MercuryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -207,6 +227,7 @@
 		8C3815A621B021A400F2CC17 /* Mercury */ = {
 			isa = PBXGroup;
 			children = (
+				8C38163A21B0249900F2CC17 /* Extensions */,
 				8C3815BE21B021CA00F2CC17 /* Sources */,
 				8C3815A721B021A400F2CC17 /* Mercury.h */,
 				8C3815A821B021A400F2CC17 /* Info.plist */,
@@ -226,6 +247,7 @@
 		8C3815BE21B021CA00F2CC17 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				8C38163821B0243E00F2CC17 /* Core */,
 				8C3815BF21B021CA00F2CC17 /* ApiClient.swift */,
 				8C3815C021B021CA00F2CC17 /* Utils */,
 				8C3815C221B021CA00F2CC17 /* Extensions */,
@@ -286,7 +308,6 @@
 				8C3815DE21B021CA00F2CC17 /* User */,
 				8C3815E021B021CA00F2CC17 /* HttpHeader.swift */,
 				8C3815E121B021CA00F2CC17 /* UploadMultipart */,
-				8C3815E421B021CA00F2CC17 /* Request */,
 				8C3815E821B021CA00F2CC17 /* DataResult.swift */,
 				8C3815E921B021CA00F2CC17 /* RequestError.swift */,
 			);
@@ -323,9 +344,11 @@
 		8C3815E421B021CA00F2CC17 /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				8C3815E721B021CA00F2CC17 /* Request.swift */,
+				8C38164321B028C400F2CC17 /* UploadMultipartFormDataRequest.swift */,
 				8C3815E521B021CA00F2CC17 /* ApiMethod.swift */,
 				8C3815E621B021CA00F2CC17 /* HttpMethod.swift */,
-				8C3815E721B021CA00F2CC17 /* Request.swift */,
+				8C38164121B028A700F2CC17 /* RequestCachePolicy.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -335,7 +358,6 @@
 			children = (
 				8C3815EB21B021CA00F2CC17 /* Logger */,
 				8C3815ED21B021CA00F2CC17 /* Converter */,
-				8C3815F221B021CA00F2CC17 /* RequestBuilder.swift */,
 				8C3815F321B021CA00F2CC17 /* User */,
 				8C3815FA21B021CA00F2CC17 /* ResponseParser */,
 				8C3815FD21B021CA00F2CC17 /* Headers */,
@@ -416,6 +438,38 @@
 				8C38160321B021CA00F2CC17 /* XSessionHeaderProvider.swift */,
 			);
 			path = XSession;
+			sourceTree = "<group>";
+		};
+		8C38163821B0243E00F2CC17 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				8C38164721B02A8A00F2CC17 /* Headers */,
+				8C3815E421B021CA00F2CC17 /* Request */,
+				8C38164A21B03F5700F2CC17 /* RequestBuilder.swift */,
+				8C3815F221B021CA00F2CC17 /* RequestBuilderImpl.swift */,
+				8C38164C21B03F7B00F2CC17 /* AuthorizationStatusProvider.swift */,
+				8C38165021B047D200F2CC17 /* RequestRetrier.swift */,
+				8C38164E21B047AF00F2CC17 /* RequestRetrierImpl.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		8C38163A21B0249900F2CC17 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8C38163B21B024A900F2CC17 /* HttpMethod+Alamofire.swift */,
+				8C38163F21B0287000F2CC17 /* RequestExtensions.swift */,
+				8C38164521B028E200F2CC17 /* StringExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8C38164721B02A8A00F2CC17 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				8C38164821B02AA400F2CC17 /* CommonHeadersProvider.swift */,
+			);
+			path = Headers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -532,12 +586,16 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MercuryTests/Pods-MercuryTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 				"${BUILT_PRODUCTS_DIR}/Unbox/Unbox.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Unbox.framework",
@@ -598,33 +656,42 @@
 				8C38160921B021CA00F2CC17 /* Data+JSON.swift in Sources */,
 				8C38162521B021CA00F2CC17 /* DataResult.swift in Sources */,
 				8C38162421B021CA00F2CC17 /* Request.swift in Sources */,
+				8C38164221B028A700F2CC17 /* RequestCachePolicy.swift in Sources */,
 				8C38161121B021CA00F2CC17 /* SubstringExtension.swift in Sources */,
 				8C38160621B021CA00F2CC17 /* DispatchQueue+Extensions.swift in Sources */,
+				8C38163C21B024A900F2CC17 /* HttpMethod+Alamofire.swift in Sources */,
+				8C38164021B0287000F2CC17 /* RequestExtensions.swift in Sources */,
 				8C38161B21B021CA00F2CC17 /* ApiError.swift in Sources */,
 				8C38163721B021CA00F2CC17 /* XSessionHeaderProvider.swift in Sources */,
 				8C38160521B021CA00F2CC17 /* CurrentDateProvider.swift in Sources */,
 				8C38161021B021CA00F2CC17 /* SequenceTypeExtensions.swift in Sources */,
 				8C38162E21B021CA00F2CC17 /* KeychainConstants.swift in Sources */,
+				8C38164621B028E200F2CC17 /* StringExtensions.swift in Sources */,
 				8C38161221B021CA00F2CC17 /* CollectionsConvenienceExtensions.swift in Sources */,
+				8C38164F21B047AF00F2CC17 /* RequestRetrierImpl.swift in Sources */,
 				8C38160821B021CA00F2CC17 /* String+URLEncodeForChecksum.swift in Sources */,
 				8C38161321B021CA00F2CC17 /* RangeExtension.swift in Sources */,
 				8C38163621B021CA00F2CC17 /* XDateHeaderProvider.swift in Sources */,
 				8C38162921B021CA00F2CC17 /* ResponseConverter.swift in Sources */,
 				8C38162321B021CA00F2CC17 /* HttpMethod.swift in Sources */,
+				8C38164921B02AA400F2CC17 /* CommonHeadersProvider.swift in Sources */,
 				8C38162D21B021CA00F2CC17 /* UserSessionProvider.swift in Sources */,
 				8C38161621B021CA00F2CC17 /* String+Pluralization.swift in Sources */,
 				8C38162F21B021CA00F2CC17 /* KeychainSensitiveDataProvider.swift in Sources */,
 				8C38163221B021CA00F2CC17 /* SensetiveDataStorage.swift in Sources */,
 				8C38161421B021CA00F2CC17 /* DictionaryExtensions.swift in Sources */,
 				8C38161A21B021CA00F2CC17 /* NetworkFactory.swift in Sources */,
+				8C38164D21B03F7B00F2CC17 /* AuthorizationStatusProvider.swift in Sources */,
 				8C38162021B021CA00F2CC17 /* UploadMultipartFormDataRequestOperation.swift in Sources */,
-				8C38162C21B021CA00F2CC17 /* RequestBuilder.swift in Sources */,
+				8C38162C21B021CA00F2CC17 /* RequestBuilderImpl.swift in Sources */,
 				8C38163421B021CA00F2CC17 /* ResponseParser.swift in Sources */,
 				8C38161721B021CA00F2CC17 /* StringExtension.swift in Sources */,
 				8C38160B21B021CA00F2CC17 /* UIDeviceExtension.swift in Sources */,
+				8C38164B21B03F5700F2CC17 /* RequestBuilder.swift in Sources */,
 				8C38163021B021CA00F2CC17 /* SensetiveDataProvider.swift in Sources */,
 				8C38162621B021CA00F2CC17 /* RequestError.swift in Sources */,
 				8C38161D21B021CA00F2CC17 /* SuccessResponse.swift in Sources */,
+				8C38165121B047D200F2CC17 /* RequestRetrier.swift in Sources */,
 				8C38162721B021CA00F2CC17 /* LoggerService.swift in Sources */,
 				8C38160D21B021CA00F2CC17 /* CollectionsExtensions.swift in Sources */,
 				8C38160F21B021CA00F2CC17 /* AppMetadataExtension.swift in Sources */,
@@ -632,6 +699,7 @@
 				8C38163121B021CA00F2CC17 /* SessionStorage.swift in Sources */,
 				8C38161F21B021CA00F2CC17 /* HttpHeader.swift in Sources */,
 				8C38162221B021CA00F2CC17 /* ApiMethod.swift in Sources */,
+				8C38164421B028C400F2CC17 /* UploadMultipartFormDataRequest.swift in Sources */,
 				8C38161821B021CA00F2CC17 /* ArrayRandomAccessAddition.swift in Sources */,
 				8C38160421B021CA00F2CC17 /* ApiClient.swift in Sources */,
 				8C38161521B021CA00F2CC17 /* OptionalsExtensions.swift in Sources */,
