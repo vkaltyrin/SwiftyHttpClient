@@ -4,7 +4,7 @@ import UIKit
 extension String {
 
     func byAddingCustomPercentEncodingForChecksumCalculation() -> String {
-        if UIDevice.iosVersion.majorVersion > 8 {
+        if #available(iOS 8, *) {
             return byAddingCustomPercentEncodingForChecksumCalculation(splitLimit: nil)
         } else {
             return byAddingCustomPercentEncodingForChecksumCalculation(splitLimit: 200)

@@ -32,4 +32,4 @@ public enum RequestError<ApiErrorType> {
     }
 }
 
-typealias ApiResult<T> = DataResult<T, RequestError<ApiError>>
+typealias ApiResult<T> = DataResult<T, RequestError<Error>>

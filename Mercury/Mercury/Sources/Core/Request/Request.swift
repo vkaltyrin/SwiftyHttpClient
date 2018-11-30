@@ -12,6 +12,7 @@ public protocol ApiRequest {
     var method: HttpMethod { get }
     var endpoint: String { get }
     var path: String { get }
+    
     var headers: [HttpHeader] { get }
     var params: [String: Any] { get }
     var httpBody: Data? { get }

@@ -156,7 +156,7 @@ private extension URLRequest {
         let sortedKeys = dictionary.keys.sorted(by: <)
         
         for key in sortedKeys {
-            if let value = dictionary.stringFor(key: key) {
+            if let value = dictionary[key] as? String {
                 if !result.isEmpty {
                     result+="&"
                 }
