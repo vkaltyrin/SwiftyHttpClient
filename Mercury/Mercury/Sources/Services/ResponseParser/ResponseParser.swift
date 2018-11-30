@@ -6,6 +6,6 @@ public protocol ResponseParser: class {
     func parse<R: ApiRequest>(
         response: DataResponse<Data>,
         for request: R,
-        completion: @escaping DataResult<R.Method.Result, RequestError<R.Method.ErrorResponse>>.Completion
+        completion: @escaping DataResult<R.Result, RequestError<R.ErrorResponse>>.Completion
     )
 }

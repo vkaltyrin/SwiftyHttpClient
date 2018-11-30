@@ -12,7 +12,7 @@ final class UploadMultipartFormDataRequestOperation<R: UploadMultipartFormDataRe
     private let dataProvider: DataProvider
     private let uploader: Uploader
     private let onProgressChange: ((Progress) -> ())?
-    private let completion: DataResult<R.Method.Result, RequestError<R.Method.ErrorResponse>>.Completion
+    private let completion: DataResult<R.Result, RequestError<R.ErrorResponse>>.Completion
     
     // MARK: - Init
     
@@ -21,7 +21,7 @@ final class UploadMultipartFormDataRequestOperation<R: UploadMultipartFormDataRe
         dataProvider: DataProvider,
         uploader: Uploader,
         onProgressChange: ((Progress) -> ())?,
-        completion: @escaping DataResult<R.Method.Result, RequestError<R.Method.ErrorResponse>>.Completion
+        completion: @escaping DataResult<R.Result, RequestError<R.ErrorResponse>>.Completion
         )
     {
         self.request = request
@@ -94,7 +94,7 @@ final class UploadMultipartFormDataRequestOperation<R: UploadMultipartFormDataRe
         isFinished = true
     }
     
-    private func finishWithError(_ error: RequestError<R.Method.ErrorResponse>) {
+    private func finishWithError(_ error: RequestError<R.ErrorResponse>) {
         queue.async {
             DispatchQueue.main.async {
                 self.completion(.error(error))
@@ -103,7 +103,7 @@ final class UploadMultipartFormDataRequestOperation<R: UploadMultipartFormDataRe
         }
     }
     
-    private func finishWithResult(_ result: R.Method.Result) {
+    private func finishWithResult(_ result: R.Result) {
         queue.async {
             DispatchQueue.main.async {
                 self.completion(.data(result))
@@ -165,7 +165,7 @@ final class UploadMultipartFormDataRequestOperation<R: UploadMultipartFormDataRe
         uploader.upload(
             multipartFormData: multipartFormData,
             to: request.url,
-            method: request.method.httpMethod.toAlamofireMethod,
+            method: request.method.toAlamofireMethod,
             headers: headers,
             encodingCompletion: { [weak self] encodingResult in
                 switch encodingResult {
@@ -185,13 +185,12 @@ final class UploadMultipartFormDataRequestOperation<R: UploadMultipartFormDataRe
                                 return
                             }
                             
-                            let method = self?.request.method
                             switch dataResponse.result {
                             case .success(let value):
-                                if let error = method?.errorConverter.decodeResponse(data: value) {
+                                if let error = self?.request.errorConverter.decodeResponse(data: value) {
                                     self?.finishWithError(.apiError(error))
                                     return
-                                } else if let result = method?.resultConverter.decodeResponse(data: value) {
+                                } else if let result = self?.request.resultConverter.decodeResponse(data: value) {
                                     self?.finishWithResult(result)
                                     return
                                 } else {
@@ -200,7 +199,7 @@ final class UploadMultipartFormDataRequestOperation<R: UploadMultipartFormDataRe
                             case .failure(let error):
                                 if
                                     let data = dataResponse.data,
-                                    let decodedError = method?.errorConverter.decodeResponse(data: data)
+                                    let decodedError = self?.request.errorConverter.decodeResponse(data: data)
                                 {
                                     self?.finishWithError(.apiError(decodedError))
                                     return

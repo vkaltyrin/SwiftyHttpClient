@@ -6,29 +6,40 @@ public enum RetryPolicy {
 }
 
 public protocol ApiRequest {
-    associatedtype Method: ApiMethod
+    associatedtype Result
+    associatedtype ErrorResponse
     
-    var method: Method { get }
+    var method: HttpMethod { get }
     var endpoint: String { get }
     var path: String { get }
     var headers: [HttpHeader] { get }
     var params: [String: Any] { get }
     var httpBody: Data? { get }
+    
     var cachePolicy: RequestCachePolicy { get }
     var retryPolicy: RetryPolicy { get }
+    var retrier: RequestRetrier? { get }
+    
+    var errorConverter: ResponseConverterOf<ErrorResponse> { get }
+    var resultConverter: ResponseConverterOf<Result> { get }
 }
 
 public extension ApiRequest {
-     var cachePolicy: RequestCachePolicy {
+    var cachePolicy: RequestCachePolicy {
         return .useProtocolCachePolicy
     }
-     var headers: [HttpHeader] { return [] }
     
-     var httpBody: Data? {
+    var headers: [HttpHeader] { return [] }
+    
+    var httpBody: Data? {
         return nil
     }
     
     var retryPolicy: RetryPolicy {
         return .noRetry
+    }
+    
+    var retrier: RequestRetrier? {
+        return nil
     }
 }

@@ -38,7 +38,7 @@ public protocol ApiClient: class {
     @discardableResult
     func send<R: ApiRequest>(
         request: R,
-        completion: @escaping DataResult<R.Method.Result, RequestError<R.Method.ErrorResponse>>.Completion)
+        completion: @escaping DataResult<R.Result, RequestError<R.ErrorResponse>>.Completion)
         -> NetworkDataTask?
     
     @discardableResult
@@ -46,7 +46,7 @@ public protocol ApiClient: class {
         dataProvider: DataProvider,
         request: R,
         onProgressChange: ((Progress) -> ())?,
-        completion: @escaping DataResult<R.Method.Result, RequestError<R.Method.ErrorResponse>>.Completion)
+        completion: @escaping DataResult<R.Result, RequestError<R.ErrorResponse>>.Completion)
         -> Operation?
 }
 
@@ -83,7 +83,7 @@ public final class ApiClientImpl: ApiClient {
     @discardableResult
     public func send<R: ApiRequest>(
         request: R,
-        completion: @escaping DataResult<R.Method.Result, RequestError<R.Method.ErrorResponse>>.Completion)
+        completion: @escaping DataResult<R.Result, RequestError<R.ErrorResponse>>.Completion)
         -> NetworkDataTask?
     {
         let networkDataTask = NetworkDataTaskImpl()
@@ -99,7 +99,7 @@ public final class ApiClientImpl: ApiClient {
         dataProvider: DataProvider,
         request: R,
         onProgressChange: ((Progress) -> ())?,
-        completion: @escaping DataResult<R.Method.Result, RequestError<R.Method.ErrorResponse>>.Completion)
+        completion: @escaping DataResult<R.Result, RequestError<R.ErrorResponse>>.Completion)
         -> Operation?
     {
         let preparedRequestResult = requestBuilder.buildUploadRequest(from: request)
@@ -135,7 +135,7 @@ public final class ApiClientImpl: ApiClient {
     private func send<R: ApiRequest>(
         networkDataTask: NetworkDataTaskImpl,
         request: R,
-        completion: @escaping DataResult<R.Method.Result, RequestError<R.Method.ErrorResponse>>.Completion) {
+        completion: @escaping DataResult<R.Result, RequestError<R.ErrorResponse>>.Completion) {
         let preparedRequestResult = requestBuilder.buildUrlRequest(from: request)
         
         switch preparedRequestResult {
@@ -173,7 +173,7 @@ public final class ApiClientImpl: ApiClient {
     private func send<R: ApiRequest>(
         _ request: R,
         urlRequest: URLRequest,
-        completion: @escaping DataResult<R.Method.Result, RequestError<R.Method.ErrorResponse>>.Completion)
+        completion: @escaping DataResult<R.Result, RequestError<R.ErrorResponse>>.Completion)
         -> Alamofire.Request?
     {
         weak var alamofireRequest: Alamofire.Request?

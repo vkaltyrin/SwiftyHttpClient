@@ -42,7 +42,6 @@
 		8C38161F21B021CA00F2CC17 /* HttpHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815E021B021CA00F2CC17 /* HttpHeader.swift */; };
 		8C38162021B021CA00F2CC17 /* UploadMultipartFormDataRequestOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815E221B021CA00F2CC17 /* UploadMultipartFormDataRequestOperation.swift */; };
 		8C38162121B021CA00F2CC17 /* Uploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815E321B021CA00F2CC17 /* Uploader.swift */; };
-		8C38162221B021CA00F2CC17 /* ApiMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815E521B021CA00F2CC17 /* ApiMethod.swift */; };
 		8C38162321B021CA00F2CC17 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815E621B021CA00F2CC17 /* HttpMethod.swift */; };
 		8C38162421B021CA00F2CC17 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815E721B021CA00F2CC17 /* Request.swift */; };
 		8C38162521B021CA00F2CC17 /* DataResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815E821B021CA00F2CC17 /* DataResult.swift */; };
@@ -74,6 +73,7 @@
 		8C38164D21B03F7B00F2CC17 /* AuthorizationStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C38164C21B03F7B00F2CC17 /* AuthorizationStatusProvider.swift */; };
 		8C38164F21B047AF00F2CC17 /* RequestRetrierImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C38164E21B047AF00F2CC17 /* RequestRetrierImpl.swift */; };
 		8C38165121B047D200F2CC17 /* RequestRetrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C38165021B047D200F2CC17 /* RequestRetrier.swift */; };
+		8C38165321B1305800F2CC17 /* RequestResponseConverterExtesions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C38165221B1305800F2CC17 /* RequestResponseConverterExtesions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,7 +125,6 @@
 		8C3815E021B021CA00F2CC17 /* HttpHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpHeader.swift; sourceTree = "<group>"; };
 		8C3815E221B021CA00F2CC17 /* UploadMultipartFormDataRequestOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadMultipartFormDataRequestOperation.swift; sourceTree = "<group>"; };
 		8C3815E321B021CA00F2CC17 /* Uploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Uploader.swift; sourceTree = "<group>"; };
-		8C3815E521B021CA00F2CC17 /* ApiMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiMethod.swift; sourceTree = "<group>"; };
 		8C3815E621B021CA00F2CC17 /* HttpMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
 		8C3815E721B021CA00F2CC17 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		8C3815E821B021CA00F2CC17 /* DataResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataResult.swift; sourceTree = "<group>"; };
@@ -157,6 +156,7 @@
 		8C38164C21B03F7B00F2CC17 /* AuthorizationStatusProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationStatusProvider.swift; sourceTree = "<group>"; };
 		8C38164E21B047AF00F2CC17 /* RequestRetrierImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRetrierImpl.swift; sourceTree = "<group>"; };
 		8C38165021B047D200F2CC17 /* RequestRetrier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRetrier.swift; sourceTree = "<group>"; };
+		8C38165221B1305800F2CC17 /* RequestResponseConverterExtesions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestResponseConverterExtesions.swift; sourceTree = "<group>"; };
 		BF2062ED3FDEC418917E5FD3 /* Pods-Mercury.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mercury.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mercury/Pods-Mercury.debug.xcconfig"; sourceTree = "<group>"; };
 		CF7002A95532526CCD517984 /* Pods-MercuryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MercuryTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MercuryTests/Pods-MercuryTests.release.xcconfig"; sourceTree = "<group>"; };
 		D8EF5859D360EB41B5C25068 /* Pods_MercuryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MercuryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -346,7 +346,6 @@
 			children = (
 				8C3815E721B021CA00F2CC17 /* Request.swift */,
 				8C38164321B028C400F2CC17 /* UploadMultipartFormDataRequest.swift */,
-				8C3815E521B021CA00F2CC17 /* ApiMethod.swift */,
 				8C3815E621B021CA00F2CC17 /* HttpMethod.swift */,
 				8C38164121B028A700F2CC17 /* RequestCachePolicy.swift */,
 			);
@@ -460,6 +459,7 @@
 				8C38163B21B024A900F2CC17 /* HttpMethod+Alamofire.swift */,
 				8C38163F21B0287000F2CC17 /* RequestExtensions.swift */,
 				8C38164521B028E200F2CC17 /* StringExtensions.swift */,
+				8C38165221B1305800F2CC17 /* RequestResponseConverterExtesions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -648,6 +648,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C38165321B1305800F2CC17 /* RequestResponseConverterExtesions.swift in Sources */,
 				8C38162B21B021CA00F2CC17 /* ResponseConverterOf.swift in Sources */,
 				8C38160C21B021CA00F2CC17 /* NSURLPathComponents.swift in Sources */,
 				8C38160721B021CA00F2CC17 /* Unbox+Extensions.swift in Sources */,
@@ -698,7 +699,6 @@
 				8C38163521B021CA00F2CC17 /* CommonRequestHeadersProvider.swift in Sources */,
 				8C38163121B021CA00F2CC17 /* SessionStorage.swift in Sources */,
 				8C38161F21B021CA00F2CC17 /* HttpHeader.swift in Sources */,
-				8C38162221B021CA00F2CC17 /* ApiMethod.swift in Sources */,
 				8C38164421B028C400F2CC17 /* UploadMultipartFormDataRequest.swift in Sources */,
 				8C38161821B021CA00F2CC17 /* ArrayRandomAccessAddition.swift in Sources */,
 				8C38160421B021CA00F2CC17 /* ApiClient.swift in Sources */,

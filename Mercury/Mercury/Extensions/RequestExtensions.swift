@@ -12,4 +12,8 @@ public extension ApiRequest {
     func cUrl() -> String {
         return ""
     }
+    
+    var errorConverter: ResponseConverterOf<ApiError> {
+        return ResponseConverterOf(ApiErrorConverter())
+    }
 }

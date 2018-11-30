@@ -7,7 +7,7 @@ public final class JsonResponseParserImpl: ResponseParser {
     public func parse<R: ApiRequest>(
         response: DataResponse<Data>,
         for request: R,
-        completion: @escaping DataResult<R.Method.Result, RequestError<R.Method.ErrorResponse>>.Completion
+        completion: @escaping DataResult<R.Result, RequestError<R.ErrorResponse>>.Completion
         )
     {
         if response.response?.statusCode == 401 {
@@ -27,10 +27,9 @@ public final class JsonResponseParserImpl: ResponseParser {
         case .success(let value):
             // Parse success response
 
-            let method = request.method
-            if let error = method.errorConverter.decodeResponse(data: value) {
+            if let error = request.errorConverter.decodeResponse(data: value) {
                 completion(.error(.apiError(error)))
-            } else if let result = method.resultConverter.decodeResponse(data: value) {
+            } else if let result = request.resultConverter.decodeResponse(data: value) {
                 // Return parsed response
                 completion(.data(result))
             } else {

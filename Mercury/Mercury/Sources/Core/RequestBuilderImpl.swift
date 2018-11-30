@@ -13,7 +13,7 @@ final class RequestBuilderImpl: RequestBuilder {
     // MARK: - ApiRequest
     
     func buildUrlRequest<R: ApiRequest>(from request: R)
-        -> DataResult<URLRequest, RequestError<R.Method.ErrorResponse>>
+        -> DataResult<URLRequest, RequestError<R.ErrorResponse>>
     {
         switch buildRequestData(from: request) {
         case .error(let error):
@@ -32,7 +32,7 @@ final class RequestBuilderImpl: RequestBuilder {
     }
     
     func buildUploadRequest<R: UploadMultipartFormDataRequest>(from request: R)
-        -> DataResult<R, RequestError<R.Method.ErrorResponse>>
+        -> DataResult<R, RequestError<R.ErrorResponse>>
     {
         switch buildRequestData(from: request) {
         case .error(let error):
@@ -48,7 +48,7 @@ final class RequestBuilderImpl: RequestBuilder {
     // MARK: - Private
     
     private func buildRequestData<R: ApiRequest>(from request: R)
-        -> DataResult<RequestData, RequestError<R.Method.ErrorResponse>>
+        -> DataResult<RequestData, RequestError<R.ErrorResponse>>
     {
         guard let url = buildUrl(from: request) else {
             return .error(.apiClientError(.cantBuildUrl(.cantInitializeUrl)))
@@ -66,7 +66,6 @@ final class RequestBuilderImpl: RequestBuilder {
         let endpointUrl = URL(string: request.endpoint)
         
         var pathComponents = [String]()
-        pathComponents.append(request.method.pathPrefix)
         pathComponents.append(request.path)
         
         let normalizedQueryPath = pathComponents.joined(separator: "/").normalizedQueryPath()
@@ -87,7 +86,7 @@ private extension URLRequest {
     {
         var urlRequest = self
         urlRequest.appendHttpHeaders(headers)
-        urlRequest.httpMethod = request.method.httpMethod.value
+        urlRequest.httpMethod = request.method.value
         urlRequest.cachePolicy = request.cachePolicy.toNSURLRequestCachePolicy
         return urlRequest
     }
@@ -95,13 +94,13 @@ private extension URLRequest {
     func appendUrlRequestParameters<R: ApiRequest>(
         from request: R,
         url: URL)
-        -> DataResult<URLRequest, RequestError<R.Method.ErrorResponse>>
+        -> DataResult<URLRequest, RequestError<R.ErrorResponse>>
     {
         var urlRequest = self
         var parameters = [String: Any]()
         appendFlatternedParameters(&parameters, fromTreeParameters: request.params, keyPrefix: nil)
         
-        let shouldSendParametersInUrl = request.method.httpMethod == .get || request.method.httpMethod == .head
+        let shouldSendParametersInUrl = request.method == .get || request.method == .head
         if shouldSendParametersInUrl {
             let queryString = encodedSortedByKeyStringFrom(dictionary: parameters)
             urlRequest.url = URL(string: url.absoluteString + "?" + queryString)
