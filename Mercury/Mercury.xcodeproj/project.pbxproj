@@ -12,7 +12,7 @@
 		8C3815AE21B021A400F2CC17 /* Mercury.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C3815A421B021A400F2CC17 /* Mercury.framework */; };
 		8C3815B321B021A400F2CC17 /* MercuryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815B221B021A400F2CC17 /* MercuryTests.swift */; };
 		8C3815B521B021A400F2CC17 /* Mercury.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C3815A721B021A400F2CC17 /* Mercury.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8C38160421B021CA00F2CC17 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815BF21B021CA00F2CC17 /* ApiClient.swift */; };
+		8C38160421B021CA00F2CC17 /* ApiClientImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815BF21B021CA00F2CC17 /* ApiClientImpl.swift */; };
 		8C38160721B021CA00F2CC17 /* Unbox+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815C421B021CA00F2CC17 /* Unbox+Extensions.swift */; };
 		8C38160821B021CA00F2CC17 /* String+URLEncodeForChecksum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815C521B021CA00F2CC17 /* String+URLEncodeForChecksum.swift */; };
 		8C38160921B021CA00F2CC17 /* Data+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815C621B021CA00F2CC17 /* Data+JSON.swift */; };
@@ -63,6 +63,12 @@
 		8C38164F21B047AF00F2CC17 /* RequestRetrierImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C38164E21B047AF00F2CC17 /* RequestRetrierImpl.swift */; };
 		8C38165121B047D200F2CC17 /* RequestRetrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C38165021B047D200F2CC17 /* RequestRetrier.swift */; };
 		8C38165321B1305800F2CC17 /* RequestResponseConverterExtesions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C38165221B1305800F2CC17 /* RequestResponseConverterExtesions.swift */; };
+		8C38165621B1395300F2CC17 /* AlamofireNetworkDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C38165521B1395300F2CC17 /* AlamofireNetworkDataTask.swift */; };
+		8C38165821B1396D00F2CC17 /* AlamofireRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C38165721B1396D00F2CC17 /* AlamofireRequestDispatcher.swift */; };
+		8C38165A21B1399B00F2CC17 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C38165921B1399B00F2CC17 /* ApiClient.swift */; };
+		8C38165C21B139BE00F2CC17 /* NetworkDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C38165B21B139BE00F2CC17 /* NetworkDataTask.swift */; };
+		8C38165E21B139D300F2CC17 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C38165D21B139D300F2CC17 /* DataProvider.swift */; };
+		8C38166021B139EB00F2CC17 /* RequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C38165F21B139EB00F2CC17 /* RequestDispatcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,7 +90,7 @@
 		8C3815AD21B021A400F2CC17 /* MercuryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MercuryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C3815B221B021A400F2CC17 /* MercuryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MercuryTests.swift; sourceTree = "<group>"; };
 		8C3815B421B021A400F2CC17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8C3815BF21B021CA00F2CC17 /* ApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		8C3815BF21B021CA00F2CC17 /* ApiClientImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClientImpl.swift; sourceTree = "<group>"; };
 		8C3815C421B021CA00F2CC17 /* Unbox+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Unbox+Extensions.swift"; sourceTree = "<group>"; };
 		8C3815C521B021CA00F2CC17 /* String+URLEncodeForChecksum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+URLEncodeForChecksum.swift"; sourceTree = "<group>"; };
 		8C3815C621B021CA00F2CC17 /* Data+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+JSON.swift"; sourceTree = "<group>"; };
@@ -135,6 +141,12 @@
 		8C38164E21B047AF00F2CC17 /* RequestRetrierImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRetrierImpl.swift; sourceTree = "<group>"; };
 		8C38165021B047D200F2CC17 /* RequestRetrier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRetrier.swift; sourceTree = "<group>"; };
 		8C38165221B1305800F2CC17 /* RequestResponseConverterExtesions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestResponseConverterExtesions.swift; sourceTree = "<group>"; };
+		8C38165521B1395300F2CC17 /* AlamofireNetworkDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireNetworkDataTask.swift; sourceTree = "<group>"; };
+		8C38165721B1396D00F2CC17 /* AlamofireRequestDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireRequestDispatcher.swift; sourceTree = "<group>"; };
+		8C38165921B1399B00F2CC17 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		8C38165B21B139BE00F2CC17 /* NetworkDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataTask.swift; sourceTree = "<group>"; };
+		8C38165D21B139D300F2CC17 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		8C38165F21B139EB00F2CC17 /* RequestDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDispatcher.swift; sourceTree = "<group>"; };
 		BF2062ED3FDEC418917E5FD3 /* Pods-Mercury.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mercury.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mercury/Pods-Mercury.debug.xcconfig"; sourceTree = "<group>"; };
 		CF7002A95532526CCD517984 /* Pods-MercuryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MercuryTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MercuryTests/Pods-MercuryTests.release.xcconfig"; sourceTree = "<group>"; };
 		D8EF5859D360EB41B5C25068 /* Pods_MercuryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MercuryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -225,8 +237,10 @@
 		8C3815BE21B021CA00F2CC17 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				8C38165421B1394000F2CC17 /* Alamofire */,
 				8C38163821B0243E00F2CC17 /* Core */,
-				8C3815BF21B021CA00F2CC17 /* ApiClient.swift */,
+				8C38165921B1399B00F2CC17 /* ApiClient.swift */,
+				8C3815BF21B021CA00F2CC17 /* ApiClientImpl.swift */,
 				8C3815C221B021CA00F2CC17 /* Extensions */,
 				8C3815D821B021CA00F2CC17 /* NetworkFactory.swift */,
 				8C3815D921B021CA00F2CC17 /* Domain */,
@@ -368,6 +382,9 @@
 				8C38164C21B03F7B00F2CC17 /* AuthorizationStatusProvider.swift */,
 				8C38165021B047D200F2CC17 /* RequestRetrier.swift */,
 				8C38164E21B047AF00F2CC17 /* RequestRetrierImpl.swift */,
+				8C38165B21B139BE00F2CC17 /* NetworkDataTask.swift */,
+				8C38165D21B139D300F2CC17 /* DataProvider.swift */,
+				8C38165F21B139EB00F2CC17 /* RequestDispatcher.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -389,6 +406,15 @@
 				8C38164821B02AA400F2CC17 /* CommonHeadersProvider.swift */,
 			);
 			path = Headers;
+			sourceTree = "<group>";
+		};
+		8C38165421B1394000F2CC17 /* Alamofire */ = {
+			isa = PBXGroup;
+			children = (
+				8C38165521B1395300F2CC17 /* AlamofireNetworkDataTask.swift */,
+				8C38165721B1396D00F2CC17 /* AlamofireRequestDispatcher.swift */,
+			);
+			path = Alamofire;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -568,6 +594,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C38165321B1305800F2CC17 /* RequestResponseConverterExtesions.swift in Sources */,
+				8C38165C21B139BE00F2CC17 /* NetworkDataTask.swift in Sources */,
 				8C38162B21B021CA00F2CC17 /* ResponseConverterOf.swift in Sources */,
 				8C38160C21B021CA00F2CC17 /* NSURLPathComponents.swift in Sources */,
 				8C38160721B021CA00F2CC17 /* Unbox+Extensions.swift in Sources */,
@@ -576,8 +603,10 @@
 				8C38160921B021CA00F2CC17 /* Data+JSON.swift in Sources */,
 				8C38162521B021CA00F2CC17 /* DataResult.swift in Sources */,
 				8C38162421B021CA00F2CC17 /* Request.swift in Sources */,
+				8C38165E21B139D300F2CC17 /* DataProvider.swift in Sources */,
 				8C38164221B028A700F2CC17 /* RequestCachePolicy.swift in Sources */,
 				8C38161121B021CA00F2CC17 /* SubstringExtension.swift in Sources */,
+				8C38165A21B1399B00F2CC17 /* ApiClient.swift in Sources */,
 				8C38163C21B024A900F2CC17 /* HttpMethod+Alamofire.swift in Sources */,
 				8C38164021B0287000F2CC17 /* RequestExtensions.swift in Sources */,
 				8C38161B21B021CA00F2CC17 /* ApiError.swift in Sources */,
@@ -593,23 +622,26 @@
 				8C38161621B021CA00F2CC17 /* String+Pluralization.swift in Sources */,
 				8C38161421B021CA00F2CC17 /* DictionaryExtensions.swift in Sources */,
 				8C38161A21B021CA00F2CC17 /* NetworkFactory.swift in Sources */,
+				8C38165821B1396D00F2CC17 /* AlamofireRequestDispatcher.swift in Sources */,
 				8C38164D21B03F7B00F2CC17 /* AuthorizationStatusProvider.swift in Sources */,
 				8C38162021B021CA00F2CC17 /* UploadMultipartFormDataRequestOperation.swift in Sources */,
 				8C38162C21B021CA00F2CC17 /* RequestBuilderImpl.swift in Sources */,
 				8C38163421B021CA00F2CC17 /* ResponseParser.swift in Sources */,
+				8C38166021B139EB00F2CC17 /* RequestDispatcher.swift in Sources */,
 				8C38161721B021CA00F2CC17 /* StringExtension.swift in Sources */,
 				8C38160B21B021CA00F2CC17 /* UIDeviceExtension.swift in Sources */,
 				8C38164B21B03F5700F2CC17 /* RequestBuilder.swift in Sources */,
 				8C38162621B021CA00F2CC17 /* RequestError.swift in Sources */,
 				8C38161D21B021CA00F2CC17 /* SuccessResponse.swift in Sources */,
 				8C38165121B047D200F2CC17 /* RequestRetrier.swift in Sources */,
+				8C38165621B1395300F2CC17 /* AlamofireNetworkDataTask.swift in Sources */,
 				8C38162721B021CA00F2CC17 /* LoggerService.swift in Sources */,
 				8C38160D21B021CA00F2CC17 /* CollectionsExtensions.swift in Sources */,
 				8C38160F21B021CA00F2CC17 /* AppMetadataExtension.swift in Sources */,
 				8C38161F21B021CA00F2CC17 /* HttpHeader.swift in Sources */,
 				8C38164421B028C400F2CC17 /* UploadMultipartFormDataRequest.swift in Sources */,
 				8C38161821B021CA00F2CC17 /* ArrayRandomAccessAddition.swift in Sources */,
-				8C38160421B021CA00F2CC17 /* ApiClient.swift in Sources */,
+				8C38160421B021CA00F2CC17 /* ApiClientImpl.swift in Sources */,
 				8C38161521B021CA00F2CC17 /* OptionalsExtensions.swift in Sources */,
 				8C38162A21B021CA00F2CC17 /* ErrorConverter.swift in Sources */,
 				8C38161921B021CA00F2CC17 /* HTTPCookieExtensions.swift in Sources */,
