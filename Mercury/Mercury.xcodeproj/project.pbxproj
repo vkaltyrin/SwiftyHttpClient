@@ -10,7 +10,6 @@
 		32CDE438C1D5AF698FDA26A7 /* Pods_MercuryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8EF5859D360EB41B5C25068 /* Pods_MercuryTests.framework */; };
 		5AF920425C7E215C9336170F /* Pods_Mercury.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5E104AD4FBD4ACA82251D9 /* Pods_Mercury.framework */; };
 		8C3815AE21B021A400F2CC17 /* Mercury.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C3815A421B021A400F2CC17 /* Mercury.framework */; };
-		8C3815B321B021A400F2CC17 /* MercuryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815B221B021A400F2CC17 /* MercuryTests.swift */; };
 		8C3815B521B021A400F2CC17 /* Mercury.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C3815A721B021A400F2CC17 /* Mercury.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8C38160421B021CA00F2CC17 /* ApiClientImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815BF21B021CA00F2CC17 /* ApiClientImpl.swift */; };
 		8C38160821B021CA00F2CC17 /* String+URLEncodeForChecksum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815C521B021CA00F2CC17 /* String+URLEncodeForChecksum.swift */; };
@@ -49,6 +48,7 @@
 		8C38166921B13F4D00F2CC17 /* Uploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C38166821B13F4D00F2CC17 /* Uploader.swift */; };
 		8C38166B21B17D4800F2CC17 /* DecodableResponseConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C38166A21B17D4800F2CC17 /* DecodableResponseConverter.swift */; };
 		8C38166D21B17D6100F2CC17 /* ResponseConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C38166C21B17D6100F2CC17 /* ResponseConverter.swift */; };
+		8C38167421B1825D00F2CC17 /* RequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C38167321B1825D00F2CC17 /* RequestBuilderTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,7 +68,6 @@
 		8C3815A721B021A400F2CC17 /* Mercury.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mercury.h; sourceTree = "<group>"; };
 		8C3815A821B021A400F2CC17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C3815AD21B021A400F2CC17 /* MercuryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MercuryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8C3815B221B021A400F2CC17 /* MercuryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MercuryTests.swift; sourceTree = "<group>"; };
 		8C3815B421B021A400F2CC17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C3815BF21B021CA00F2CC17 /* ApiClientImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClientImpl.swift; sourceTree = "<group>"; };
 		8C3815C521B021CA00F2CC17 /* String+URLEncodeForChecksum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+URLEncodeForChecksum.swift"; sourceTree = "<group>"; };
@@ -107,6 +106,8 @@
 		8C38166821B13F4D00F2CC17 /* Uploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Uploader.swift; sourceTree = "<group>"; };
 		8C38166A21B17D4800F2CC17 /* DecodableResponseConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableResponseConverter.swift; sourceTree = "<group>"; };
 		8C38166C21B17D6100F2CC17 /* ResponseConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseConverter.swift; sourceTree = "<group>"; };
+		8C38167221B1825D00F2CC17 /* MercuryTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MercuryTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		8C38167321B1825D00F2CC17 /* RequestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBuilderTests.swift; sourceTree = "<group>"; };
 		BF2062ED3FDEC418917E5FD3 /* Pods-Mercury.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mercury.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mercury/Pods-Mercury.debug.xcconfig"; sourceTree = "<group>"; };
 		CF7002A95532526CCD517984 /* Pods-MercuryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MercuryTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MercuryTests/Pods-MercuryTests.release.xcconfig"; sourceTree = "<group>"; };
 		D8EF5859D360EB41B5C25068 /* Pods_MercuryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MercuryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -188,8 +189,9 @@
 		8C3815B121B021A400F2CC17 /* MercuryTests */ = {
 			isa = PBXGroup;
 			children = (
-				8C3815B221B021A400F2CC17 /* MercuryTests.swift */,
 				8C3815B421B021A400F2CC17 /* Info.plist */,
+				8C38167321B1825D00F2CC17 /* RequestBuilderTests.swift */,
+				8C38167221B1825D00F2CC17 /* MercuryTests-Bridging-Header.h */,
 			);
 			path = MercuryTests;
 			sourceTree = "<group>";
@@ -409,6 +411,7 @@
 					};
 					8C3815AC21B021A400F2CC17 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -557,7 +560,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C3815B321B021A400F2CC17 /* MercuryTests.swift in Sources */,
+				8C38167421B1825D00F2CC17 /* RequestBuilderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -751,6 +754,7 @@
 			baseConfigurationReference = 6F68C36648C11E3076D8B432 /* Pods-MercuryTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y6QKS4Y8B9;
 				INFOPLIST_FILE = MercuryTests/Info.plist;
@@ -761,6 +765,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.vkaltyrin.MercuryTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MercuryTests/MercuryTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -771,6 +777,7 @@
 			baseConfigurationReference = CF7002A95532526CCD517984 /* Pods-MercuryTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y6QKS4Y8B9;
 				INFOPLIST_FILE = MercuryTests/Info.plist;
@@ -781,6 +788,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.vkaltyrin.MercuryTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MercuryTests/MercuryTests-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
