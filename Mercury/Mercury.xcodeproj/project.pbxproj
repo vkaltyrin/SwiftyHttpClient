@@ -13,8 +13,6 @@
 		8C3815B321B021A400F2CC17 /* MercuryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815B221B021A400F2CC17 /* MercuryTests.swift */; };
 		8C3815B521B021A400F2CC17 /* Mercury.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C3815A721B021A400F2CC17 /* Mercury.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8C38160421B021CA00F2CC17 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815BF21B021CA00F2CC17 /* ApiClient.swift */; };
-		8C38160521B021CA00F2CC17 /* CurrentDateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815C121B021CA00F2CC17 /* CurrentDateProvider.swift */; };
-		8C38160621B021CA00F2CC17 /* DispatchQueue+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815C321B021CA00F2CC17 /* DispatchQueue+Extensions.swift */; };
 		8C38160721B021CA00F2CC17 /* Unbox+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815C421B021CA00F2CC17 /* Unbox+Extensions.swift */; };
 		8C38160821B021CA00F2CC17 /* String+URLEncodeForChecksum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815C521B021CA00F2CC17 /* String+URLEncodeForChecksum.swift */; };
 		8C38160921B021CA00F2CC17 /* Data+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815C621B021CA00F2CC17 /* Data+JSON.swift */; };
@@ -52,17 +50,8 @@
 		8C38162A21B021CA00F2CC17 /* ErrorConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815F021B021CA00F2CC17 /* ErrorConverter.swift */; };
 		8C38162B21B021CA00F2CC17 /* ResponseConverterOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815F121B021CA00F2CC17 /* ResponseConverterOf.swift */; };
 		8C38162C21B021CA00F2CC17 /* RequestBuilderImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815F221B021CA00F2CC17 /* RequestBuilderImpl.swift */; };
-		8C38162D21B021CA00F2CC17 /* UserSessionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815F421B021CA00F2CC17 /* UserSessionProvider.swift */; };
-		8C38162E21B021CA00F2CC17 /* KeychainConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815F521B021CA00F2CC17 /* KeychainConstants.swift */; };
-		8C38162F21B021CA00F2CC17 /* KeychainSensitiveDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815F621B021CA00F2CC17 /* KeychainSensitiveDataProvider.swift */; };
-		8C38163021B021CA00F2CC17 /* SensetiveDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815F721B021CA00F2CC17 /* SensetiveDataProvider.swift */; };
-		8C38163121B021CA00F2CC17 /* SessionStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815F821B021CA00F2CC17 /* SessionStorage.swift */; };
-		8C38163221B021CA00F2CC17 /* SensetiveDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815F921B021CA00F2CC17 /* SensetiveDataStorage.swift */; };
 		8C38163321B021CA00F2CC17 /* JsonResponseParserImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815FB21B021CA00F2CC17 /* JsonResponseParserImpl.swift */; };
 		8C38163421B021CA00F2CC17 /* ResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815FC21B021CA00F2CC17 /* ResponseParser.swift */; };
-		8C38163521B021CA00F2CC17 /* CommonRequestHeadersProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3815FE21B021CA00F2CC17 /* CommonRequestHeadersProvider.swift */; };
-		8C38163621B021CA00F2CC17 /* XDateHeaderProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C38160121B021CA00F2CC17 /* XDateHeaderProvider.swift */; };
-		8C38163721B021CA00F2CC17 /* XSessionHeaderProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C38160321B021CA00F2CC17 /* XSessionHeaderProvider.swift */; };
 		8C38163C21B024A900F2CC17 /* HttpMethod+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C38163B21B024A900F2CC17 /* HttpMethod+Alamofire.swift */; };
 		8C38164021B0287000F2CC17 /* RequestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C38163F21B0287000F2CC17 /* RequestExtensions.swift */; };
 		8C38164221B028A700F2CC17 /* RequestCachePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C38164121B028A700F2CC17 /* RequestCachePolicy.swift */; };
@@ -96,8 +85,6 @@
 		8C3815B221B021A400F2CC17 /* MercuryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MercuryTests.swift; sourceTree = "<group>"; };
 		8C3815B421B021A400F2CC17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C3815BF21B021CA00F2CC17 /* ApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
-		8C3815C121B021CA00F2CC17 /* CurrentDateProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentDateProvider.swift; sourceTree = "<group>"; };
-		8C3815C321B021CA00F2CC17 /* DispatchQueue+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Extensions.swift"; sourceTree = "<group>"; };
 		8C3815C421B021CA00F2CC17 /* Unbox+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Unbox+Extensions.swift"; sourceTree = "<group>"; };
 		8C3815C521B021CA00F2CC17 /* String+URLEncodeForChecksum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+URLEncodeForChecksum.swift"; sourceTree = "<group>"; };
 		8C3815C621B021CA00F2CC17 /* Data+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+JSON.swift"; sourceTree = "<group>"; };
@@ -135,17 +122,8 @@
 		8C3815F021B021CA00F2CC17 /* ErrorConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorConverter.swift; sourceTree = "<group>"; };
 		8C3815F121B021CA00F2CC17 /* ResponseConverterOf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseConverterOf.swift; sourceTree = "<group>"; };
 		8C3815F221B021CA00F2CC17 /* RequestBuilderImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestBuilderImpl.swift; sourceTree = "<group>"; };
-		8C3815F421B021CA00F2CC17 /* UserSessionProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSessionProvider.swift; sourceTree = "<group>"; };
-		8C3815F521B021CA00F2CC17 /* KeychainConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainConstants.swift; sourceTree = "<group>"; };
-		8C3815F621B021CA00F2CC17 /* KeychainSensitiveDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainSensitiveDataProvider.swift; sourceTree = "<group>"; };
-		8C3815F721B021CA00F2CC17 /* SensetiveDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensetiveDataProvider.swift; sourceTree = "<group>"; };
-		8C3815F821B021CA00F2CC17 /* SessionStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionStorage.swift; sourceTree = "<group>"; };
-		8C3815F921B021CA00F2CC17 /* SensetiveDataStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensetiveDataStorage.swift; sourceTree = "<group>"; };
 		8C3815FB21B021CA00F2CC17 /* JsonResponseParserImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonResponseParserImpl.swift; sourceTree = "<group>"; };
 		8C3815FC21B021CA00F2CC17 /* ResponseParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseParser.swift; sourceTree = "<group>"; };
-		8C3815FE21B021CA00F2CC17 /* CommonRequestHeadersProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonRequestHeadersProvider.swift; sourceTree = "<group>"; };
-		8C38160121B021CA00F2CC17 /* XDateHeaderProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XDateHeaderProvider.swift; sourceTree = "<group>"; };
-		8C38160321B021CA00F2CC17 /* XSessionHeaderProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XSessionHeaderProvider.swift; sourceTree = "<group>"; };
 		8C38163B21B024A900F2CC17 /* HttpMethod+Alamofire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HttpMethod+Alamofire.swift"; sourceTree = "<group>"; };
 		8C38163F21B0287000F2CC17 /* RequestExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestExtensions.swift; sourceTree = "<group>"; };
 		8C38164121B028A700F2CC17 /* RequestCachePolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestCachePolicy.swift; sourceTree = "<group>"; };
@@ -249,7 +227,6 @@
 			children = (
 				8C38163821B0243E00F2CC17 /* Core */,
 				8C3815BF21B021CA00F2CC17 /* ApiClient.swift */,
-				8C3815C021B021CA00F2CC17 /* Utils */,
 				8C3815C221B021CA00F2CC17 /* Extensions */,
 				8C3815D821B021CA00F2CC17 /* NetworkFactory.swift */,
 				8C3815D921B021CA00F2CC17 /* Domain */,
@@ -258,18 +235,9 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		8C3815C021B021CA00F2CC17 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				8C3815C121B021CA00F2CC17 /* CurrentDateProvider.swift */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
 		8C3815C221B021CA00F2CC17 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				8C3815C321B021CA00F2CC17 /* DispatchQueue+Extensions.swift */,
 				8C3815C421B021CA00F2CC17 /* Unbox+Extensions.swift */,
 				8C3815C521B021CA00F2CC17 /* String+URLEncodeForChecksum.swift */,
 				8C3815C621B021CA00F2CC17 /* Data+JSON.swift */,
@@ -357,9 +325,7 @@
 			children = (
 				8C3815EB21B021CA00F2CC17 /* Logger */,
 				8C3815ED21B021CA00F2CC17 /* Converter */,
-				8C3815F321B021CA00F2CC17 /* User */,
 				8C3815FA21B021CA00F2CC17 /* ResponseParser */,
-				8C3815FD21B021CA00F2CC17 /* Headers */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -383,19 +349,6 @@
 			path = Converter;
 			sourceTree = "<group>";
 		};
-		8C3815F321B021CA00F2CC17 /* User */ = {
-			isa = PBXGroup;
-			children = (
-				8C3815F421B021CA00F2CC17 /* UserSessionProvider.swift */,
-				8C3815F521B021CA00F2CC17 /* KeychainConstants.swift */,
-				8C3815F621B021CA00F2CC17 /* KeychainSensitiveDataProvider.swift */,
-				8C3815F721B021CA00F2CC17 /* SensetiveDataProvider.swift */,
-				8C3815F821B021CA00F2CC17 /* SessionStorage.swift */,
-				8C3815F921B021CA00F2CC17 /* SensetiveDataStorage.swift */,
-			);
-			path = User;
-			sourceTree = "<group>";
-		};
 		8C3815FA21B021CA00F2CC17 /* ResponseParser */ = {
 			isa = PBXGroup;
 			children = (
@@ -403,40 +356,6 @@
 				8C3815FC21B021CA00F2CC17 /* ResponseParser.swift */,
 			);
 			path = ResponseParser;
-			sourceTree = "<group>";
-		};
-		8C3815FD21B021CA00F2CC17 /* Headers */ = {
-			isa = PBXGroup;
-			children = (
-				8C3815FE21B021CA00F2CC17 /* CommonRequestHeadersProvider.swift */,
-				8C3815FF21B021CA00F2CC17 /* Headers */,
-			);
-			path = Headers;
-			sourceTree = "<group>";
-		};
-		8C3815FF21B021CA00F2CC17 /* Headers */ = {
-			isa = PBXGroup;
-			children = (
-				8C38160021B021CA00F2CC17 /* XDate */,
-				8C38160221B021CA00F2CC17 /* XSession */,
-			);
-			path = Headers;
-			sourceTree = "<group>";
-		};
-		8C38160021B021CA00F2CC17 /* XDate */ = {
-			isa = PBXGroup;
-			children = (
-				8C38160121B021CA00F2CC17 /* XDateHeaderProvider.swift */,
-			);
-			path = XDate;
-			sourceTree = "<group>";
-		};
-		8C38160221B021CA00F2CC17 /* XSession */ = {
-			isa = PBXGroup;
-			children = (
-				8C38160321B021CA00F2CC17 /* XSessionHeaderProvider.swift */,
-			);
-			path = XSession;
 			sourceTree = "<group>";
 		};
 		8C38163821B0243E00F2CC17 /* Core */ = {
@@ -659,27 +578,19 @@
 				8C38162421B021CA00F2CC17 /* Request.swift in Sources */,
 				8C38164221B028A700F2CC17 /* RequestCachePolicy.swift in Sources */,
 				8C38161121B021CA00F2CC17 /* SubstringExtension.swift in Sources */,
-				8C38160621B021CA00F2CC17 /* DispatchQueue+Extensions.swift in Sources */,
 				8C38163C21B024A900F2CC17 /* HttpMethod+Alamofire.swift in Sources */,
 				8C38164021B0287000F2CC17 /* RequestExtensions.swift in Sources */,
 				8C38161B21B021CA00F2CC17 /* ApiError.swift in Sources */,
-				8C38163721B021CA00F2CC17 /* XSessionHeaderProvider.swift in Sources */,
-				8C38160521B021CA00F2CC17 /* CurrentDateProvider.swift in Sources */,
 				8C38161021B021CA00F2CC17 /* SequenceTypeExtensions.swift in Sources */,
-				8C38162E21B021CA00F2CC17 /* KeychainConstants.swift in Sources */,
 				8C38164621B028E200F2CC17 /* StringExtensions.swift in Sources */,
 				8C38161221B021CA00F2CC17 /* CollectionsConvenienceExtensions.swift in Sources */,
 				8C38164F21B047AF00F2CC17 /* RequestRetrierImpl.swift in Sources */,
 				8C38160821B021CA00F2CC17 /* String+URLEncodeForChecksum.swift in Sources */,
 				8C38161321B021CA00F2CC17 /* RangeExtension.swift in Sources */,
-				8C38163621B021CA00F2CC17 /* XDateHeaderProvider.swift in Sources */,
 				8C38162921B021CA00F2CC17 /* ResponseConverter.swift in Sources */,
 				8C38162321B021CA00F2CC17 /* HttpMethod.swift in Sources */,
 				8C38164921B02AA400F2CC17 /* CommonHeadersProvider.swift in Sources */,
-				8C38162D21B021CA00F2CC17 /* UserSessionProvider.swift in Sources */,
 				8C38161621B021CA00F2CC17 /* String+Pluralization.swift in Sources */,
-				8C38162F21B021CA00F2CC17 /* KeychainSensitiveDataProvider.swift in Sources */,
-				8C38163221B021CA00F2CC17 /* SensetiveDataStorage.swift in Sources */,
 				8C38161421B021CA00F2CC17 /* DictionaryExtensions.swift in Sources */,
 				8C38161A21B021CA00F2CC17 /* NetworkFactory.swift in Sources */,
 				8C38164D21B03F7B00F2CC17 /* AuthorizationStatusProvider.swift in Sources */,
@@ -689,15 +600,12 @@
 				8C38161721B021CA00F2CC17 /* StringExtension.swift in Sources */,
 				8C38160B21B021CA00F2CC17 /* UIDeviceExtension.swift in Sources */,
 				8C38164B21B03F5700F2CC17 /* RequestBuilder.swift in Sources */,
-				8C38163021B021CA00F2CC17 /* SensetiveDataProvider.swift in Sources */,
 				8C38162621B021CA00F2CC17 /* RequestError.swift in Sources */,
 				8C38161D21B021CA00F2CC17 /* SuccessResponse.swift in Sources */,
 				8C38165121B047D200F2CC17 /* RequestRetrier.swift in Sources */,
 				8C38162721B021CA00F2CC17 /* LoggerService.swift in Sources */,
 				8C38160D21B021CA00F2CC17 /* CollectionsExtensions.swift in Sources */,
 				8C38160F21B021CA00F2CC17 /* AppMetadataExtension.swift in Sources */,
-				8C38163521B021CA00F2CC17 /* CommonRequestHeadersProvider.swift in Sources */,
-				8C38163121B021CA00F2CC17 /* SessionStorage.swift in Sources */,
 				8C38161F21B021CA00F2CC17 /* HttpHeader.swift in Sources */,
 				8C38164421B028C400F2CC17 /* UploadMultipartFormDataRequest.swift in Sources */,
 				8C38161821B021CA00F2CC17 /* ArrayRandomAccessAddition.swift in Sources */,

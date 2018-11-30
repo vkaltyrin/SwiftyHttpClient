@@ -147,7 +147,7 @@ public final class ApiClientImpl: ApiClient {
             
             networkDataTask.request = send(request, urlRequest: urlRequest) { result in
                 result.onData { data in
-                    DispatchQueue.dispatchToMain {
+                    DispatchQueue.main.async {
                         completion(.data(data))
                     }
                 }
@@ -160,7 +160,7 @@ public final class ApiClientImpl: ApiClient {
                             completion: completion
                         )
                     } else {
-                        DispatchQueue.dispatchToMain {
+                        DispatchQueue.main.async {
                             completion(.error(networkRequestError))
                         }
                     }
