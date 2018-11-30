@@ -1,7 +1,7 @@
 import Foundation
 import Alamofire
 
-final class UploadMultipartFormDataRequestOperation<R: UploadMultipartFormDataRequest>: Operation {
+final class AlamofireUploadMultipartFormDataRequestOperation<R: UploadMultipartFormDataRequest>: Operation {
     
     // MARK: - State
     private let queue = DispatchQueue(label: "com.apiClient.UploadMultipartFormDataRequestOperation.queue")

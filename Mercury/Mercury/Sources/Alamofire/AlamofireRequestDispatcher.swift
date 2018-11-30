@@ -5,13 +5,13 @@ final class AlamofireRequestDispatcher: RequestDispatcher {
     
     // MARK: - Dependencies:
     private let responseParser: ResponseParser
-    private let loggerService: LoggerService
     
-    init(responseParser: ResponseParser, loggerService: LoggerService) {
+    // MARK: - Init
+    init(responseParser: ResponseParser) {
         self.responseParser = responseParser
-        self.loggerService = loggerService
     }
     
+    // MARK: - RequestDispatcher
     @discardableResult
     func send<R: ApiRequest>(
         _ request: R,
@@ -22,13 +22,7 @@ final class AlamofireRequestDispatcher: RequestDispatcher {
         weak var alamofireRequest: Alamofire.Request?
         alamofireRequest = Alamofire.request(urlRequest as URLRequest).responseData(
             queue: DispatchQueue.global(qos: .utility),
-            completionHandler: { [responseParser, weak self] response in
-                
-                self?.loggerService.logRequest(
-                    cUrl: alamofireRequest?.debugDescription ?? "",
-                    response: response.debugDescription
-                )
-                
+            completionHandler: { [responseParser] response in
                 responseParser.parse(
                     response: response,
                     for: request,

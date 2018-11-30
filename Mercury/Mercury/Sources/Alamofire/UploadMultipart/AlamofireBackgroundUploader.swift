@@ -1,16 +1,6 @@
 import Foundation
 import Alamofire
 
-public protocol Uploader: class {
-    func upload(
-        multipartFormData: @escaping (MultipartFormData) -> Void,
-        to url: URLConvertible,
-        method: HTTPMethod,
-        headers: HTTPHeaders?,
-        encodingCompletion: ((SessionManager.MultipartFormDataEncodingResult) -> Void)?
-    )
-}
-
 extension SessionManager {
     static let background: SessionManager = {
         let configuration = URLSessionConfiguration.background(withIdentifier: "ru.eva.domclick.upload")
@@ -20,7 +10,7 @@ extension SessionManager {
     }()
 }
 
-final class BackgroundUploader: Uploader {
+final class AlamofireBackgroundUploader: Uploader {
     
     func upload(
         multipartFormData: @escaping (MultipartFormData) -> Void,

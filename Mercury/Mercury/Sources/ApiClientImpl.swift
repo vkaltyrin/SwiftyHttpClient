@@ -1,29 +1,29 @@
 import Foundation
 
-// MARK: - ApiClientImpl
-
 public final class ApiClientImpl: ApiClient {
 
     // MARK: - Dependencies
     private let requestBuilder: RequestBuilder
-    private let uploader: Uploader
     private let requestRetrier: RequestRetrier
     private let requestDispatcher: RequestDispatcher
+    private let uploader: Uploader
+    private let operationBuilder: UploadMultipartFormDataRequestOperationBuilder
     
     // MARK: - Init
     init(requestBuilder: RequestBuilder,
-         uploader: Uploader,
          requestRetrier: RequestRetrier,
-         requestDispatcher: RequestDispatcher)
+         requestDispatcher: RequestDispatcher,
+         uploader: Uploader,
+         operationBuilder: UploadMultipartFormDataRequestOperationBuilder)
     {
         self.requestBuilder = requestBuilder
-        self.uploader = uploader
         self.requestRetrier = requestRetrier
         self.requestDispatcher = requestDispatcher
+        self.uploader = uploader
+        self.operationBuilder = operationBuilder
     }
     
     // MARK: - ApiClient
-    
     @discardableResult
     public func send<R: ApiRequest>(
         request: R,
@@ -50,9 +50,8 @@ public final class ApiClientImpl: ApiClient {
         case .error(let error):
             completion(.error(error))
             return nil
-
         case .data(let preparedRequest):
-            let uploadOperation = UploadMultipartFormDataRequestOperation(
+            let uploadOperation = operationBuilder.buildOperation(
                 request: preparedRequest,
                 dataProvider: dataProvider,
                 uploader: uploader,
@@ -67,7 +66,6 @@ public final class ApiClientImpl: ApiClient {
     }
     
     // MARK: - Private
-    
     private let uploadQueue: OperationQueue = {
         let queue = OperationQueue()
         queue.qualityOfService = .utility

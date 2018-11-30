@@ -2,12 +2,15 @@ import Foundation
 import Alamofire
 
 public final class AlamofireNetworkDataTask: NetworkDataTask {
-    var request: Alamofire.Request?
+    // MARK: - Dependencies
+    let request: Alamofire.Request?
     
+    // MARK: - Init
     init(request: Alamofire.Request?) {
         self.request = request
     }
     
+    // MARK: - NetworkDataTask
     public var isCancelled = false
     
     public func cancel() {
