@@ -15,7 +15,7 @@ extension String {
     func byAddingCustomPercentEncodingForChecksumCalculation(splitLimit: Int?) -> String {
         if let splitLimit = splitLimit {
             return split(count: splitLimit)
-                .flatMap { $0.addingPercentEncoding(withAllowedCharacters: allowedCharacterSet()) }
+                .compactMap { $0.addingPercentEncoding(withAllowedCharacters: allowedCharacterSet()) }
                 .joined()
         } else {
             return self.addingPercentEncoding(withAllowedCharacters: allowedCharacterSet()) ?? self

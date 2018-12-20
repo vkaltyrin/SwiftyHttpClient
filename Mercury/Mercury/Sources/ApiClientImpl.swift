@@ -42,7 +42,7 @@ public final class ApiClientImpl: ApiClient {
         request: R,
         onProgressChange: ((Progress) -> ())?,
         completion: @escaping DataResult<R.Result, RequestError<R.ErrorResponse>>.Completion)
-        -> Operation?
+        -> NetworkDataTask?
     {
         let preparedRequestResult = requestBuilder.buildUploadRequest(from: request)
         
@@ -61,7 +61,7 @@ public final class ApiClientImpl: ApiClient {
 
             uploadQueue.addOperation(uploadOperation)
 
-            return uploadOperation
+            return OperationDataTask(operation: uploadOperation)
         }
     }
     

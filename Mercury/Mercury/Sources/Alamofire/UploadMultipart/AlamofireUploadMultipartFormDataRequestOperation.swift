@@ -160,8 +160,6 @@ final class AlamofireUploadMultipartFormDataRequestOperation<R: UploadMultipartF
             headers[$0.name] = $0.value
         }
         
-        print(request.url)
-        
         uploader.upload(
             multipartFormData: multipartFormData,
             to: request.url,
@@ -222,5 +220,4 @@ final class AlamofireUploadMultipartFormDataRequestOperation<R: UploadMultipartF
             }
         )
     }
-
 }

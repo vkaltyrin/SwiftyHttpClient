@@ -13,5 +13,5 @@ public protocol ApiClient: class {
         request: R,
         onProgressChange: ((Progress) -> ())?,
         completion: @escaping DataResult<R.Result, RequestError<R.ErrorResponse>>.Completion)
-        -> Operation?
+        -> NetworkDataTask?
 }
