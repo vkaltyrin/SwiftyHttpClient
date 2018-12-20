@@ -9,8 +9,8 @@ public protocol ApiRequest {
     associatedtype Result
     associatedtype ErrorResponse
     
-    var method: HttpMethod { get }
     var endpoint: String { get }
+    var method: HttpMethod { get }
     var path: String { get }
     
     var headers: [HttpHeader] { get }

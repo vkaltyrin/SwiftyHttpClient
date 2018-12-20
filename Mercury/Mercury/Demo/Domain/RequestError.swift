@@ -4,7 +4,7 @@ public enum RequestBuilderError {
 }
 
 public enum ApiClientError {
-    case parsingFailure
+    case decodingFailure
     case attemptToSendAuthorizedRequest
     case cantBuildUrl(RequestBuilderError)
 }

@@ -1,11 +1,9 @@
-import Alamofire
-
-public final class JsonResponseParserImpl: ResponseParser {
+public final class JsonResponseParserImpl: ResponseDecoder {
     
-    // MARK :- ResponseParser
+    // MARK :- ResponseDecoder
     
-    public func parse<R: ApiRequest>(
-        response: DataResponse<Data>,
+    public func decode<R: ApiRequest>(
+        response: ResponseResult<Data>,
         for request: R,
         completion: @escaping DataResult<R.Result, RequestError<R.ErrorResponse>>.Completion
         )
@@ -21,10 +19,10 @@ public final class JsonResponseParserImpl: ResponseParser {
         }
         
         switch response.result {
-        case .failure(let error):
+        case .error(let error):
             // Unknown network error
             completion(.error(.networkError(error)))
-        case .success(let value):
+        case .data(let value):
             // Parse success response
 
             if let error = request.errorConverter.decodeResponse(data: value) {
@@ -33,7 +31,7 @@ public final class JsonResponseParserImpl: ResponseParser {
                 // Return parsed response
                 completion(.data(result))
             } else {
-                completion(.error(.apiClientError(.parsingFailure)))
+                completion(.error(.apiClientError(.decodingFailure)))
             }
         }
     }

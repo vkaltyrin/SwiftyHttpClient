@@ -4,11 +4,11 @@ import Alamofire
 final class AlamofireRequestDispatcher: RequestDispatcher {
     
     // MARK: - Dependencies:
-    private let responseParser: ResponseParser
+    private let responseDecoder: ResponseDecoder
     
     // MARK: - Init
-    init(responseParser: ResponseParser) {
-        self.responseParser = responseParser
+    init(responseDecoder: ResponseDecoder) {
+        self.responseDecoder = responseDecoder
     }
     
     // MARK: - RequestDispatcher
@@ -22,9 +22,9 @@ final class AlamofireRequestDispatcher: RequestDispatcher {
         weak var alamofireRequest: Alamofire.Request?
         alamofireRequest = Alamofire.request(urlRequest as URLRequest).responseData(
             queue: DispatchQueue.global(qos: .utility),
-            completionHandler: { [responseParser] response in
-                responseParser.parse(
-                    response: response,
+            completionHandler: { [responseDecoder] response in
+                responseDecoder.decode(
+                    response: response.toResponseResult(),
                     for: request,
                     completion: completion
                 )

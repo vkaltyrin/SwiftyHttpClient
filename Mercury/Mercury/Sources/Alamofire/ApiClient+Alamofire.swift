@@ -5,25 +5,25 @@ final class Mercury {
         return apiClient(
             requestRetrier: RequestRetrierImpl(),
             commonHeadersProvider: CommonHeadersProviderImpl(),
-            responseParser: JsonResponseParserImpl()
+            responseDecoder: JsonResponseParserImpl()
         )
     }
     
     class func apiClient(
         commonHeadersProvider: CommonHeadersProvider,
-        responseParser: ResponseParser
+        responseDecoder: ResponseDecoder
         ) -> ApiClient {
         return apiClient(
             requestRetrier: RequestRetrierImpl(),
             commonHeadersProvider: commonHeadersProvider,
-            responseParser: responseParser
+            responseDecoder: responseDecoder
         )
     }
     
     class func apiClient(
         requestRetrier: RequestRetrier,
         commonHeadersProvider: CommonHeadersProvider,
-        responseParser: ResponseParser
+        responseDecoder: ResponseDecoder
         ) -> ApiClient {
         return ApiClientImpl(
             requestBuilder: RequestBuilderImpl(
@@ -31,7 +31,7 @@ final class Mercury {
             ),
             requestRetrier: requestRetrier,
             requestDispatcher: AlamofireRequestDispatcher(
-                responseParser: responseParser
+                responseDecoder: responseDecoder
             ),
             uploader: AlamofireBackgroundUploader(),
             operationBuilder: AlamofireUploadMultipartFormDataOperationBuilder()

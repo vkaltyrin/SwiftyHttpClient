@@ -1,6 +1,6 @@
 import Foundation
 
-protocol UploadMultipartFormDataRequestOperationBuilder: class {
+public protocol UploadMultipartFormDataRequestOperationBuilder: class {
     func buildOperation<R: UploadMultipartFormDataRequest>(
         request: R,
         dataProvider: DataProvider,

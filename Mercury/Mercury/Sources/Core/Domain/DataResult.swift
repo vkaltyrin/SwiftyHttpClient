@@ -1,3 +1,5 @@
+public typealias GenericResult<T> = DataResult<T, Error>
+
 public enum DataResult<T, E> {
     case data(T)
     case error(E)
