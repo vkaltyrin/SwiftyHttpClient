@@ -52,6 +52,8 @@
 		8C6E23CE21CBC09700EA241E /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6E23A621CBC09600EA241E /* HTTPClient.swift */; };
 		8C6E23CF21CBC09700EA241E /* HTTPClientImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6E23A721CBC09600EA241E /* HTTPClientImpl.swift */; };
 		8C6E23D121CBC09E00EA241E /* RequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6E23D021CBC09E00EA241E /* RequestBuilderTests.swift */; };
+		8C6E23F521CBCADE00EA241E /* ResponseDecoderImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6E23F421CBCADE00EA241E /* ResponseDecoderImpl.swift */; };
+		8C6E23F721CBCC0200EA241E /* BeforeDecodingResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6E23F621CBCC0200EA241E /* BeforeDecodingResponseHandler.swift */; };
 		9D299085A8B8485715C66803 /* Pods_HTTPClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7E8FC3A79FC54AF957F44D3 /* Pods_HTTPClient.framework */; };
 /* End PBXBuildFile section */
 
@@ -115,6 +117,8 @@
 		8C6E23A621CBC09600EA241E /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		8C6E23A721CBC09600EA241E /* HTTPClientImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClientImpl.swift; sourceTree = "<group>"; };
 		8C6E23D021CBC09E00EA241E /* RequestBuilderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestBuilderTests.swift; sourceTree = "<group>"; };
+		8C6E23F421CBCADE00EA241E /* ResponseDecoderImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseDecoderImpl.swift; sourceTree = "<group>"; };
+		8C6E23F621CBCC0200EA241E /* BeforeDecodingResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeDecodingResponseHandler.swift; sourceTree = "<group>"; };
 		C92CAC27A927DB10E2ED5096 /* Pods-HTTPClientTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HTTPClientTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HTTPClientTests/Pods-HTTPClientTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DB175EDE348EC82E5DC7E4EA /* Pods-HTTPClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HTTPClient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HTTPClient/Pods-HTTPClient.debug.xcconfig"; sourceTree = "<group>"; };
 		DFC15CB0DB36A98E1D7D0D63 /* Pods-HTTPClientTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HTTPClientTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HTTPClientTests/Pods-HTTPClientTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -259,6 +263,8 @@
 				8C6E238121CBC09600EA241E /* ResponseConverter.swift */,
 				8C6E238221CBC09600EA241E /* ResponseDecoder.swift */,
 				8C6E238321CBC09600EA241E /* ResponseConverterOf.swift */,
+				8C6E23F421CBCADE00EA241E /* ResponseDecoderImpl.swift */,
+				8C6E23F621CBCC0200EA241E /* BeforeDecodingResponseHandler.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -522,10 +528,12 @@
 				8C6E23CE21CBC09700EA241E /* HTTPClient.swift in Sources */,
 				8C6E23C721CBC09700EA241E /* RequestDispatcher.swift in Sources */,
 				8C6E23CA21CBC09700EA241E /* String+URLEncodeForChecksum.swift in Sources */,
+				8C6E23F721CBCC0200EA241E /* BeforeDecodingResponseHandler.swift in Sources */,
 				8C6E23BD21CBC09700EA241E /* NetworkDataTask.swift in Sources */,
 				8C6E23B121CBC09700EA241E /* ResponseConverter.swift in Sources */,
 				8C6E23BA21CBC09700EA241E /* CommonHeadersProvider.swift in Sources */,
 				8C6E23CF21CBC09700EA241E /* HTTPClientImpl.swift in Sources */,
+				8C6E23F521CBCADE00EA241E /* ResponseDecoderImpl.swift in Sources */,
 				8C6E23BF21CBC09700EA241E /* HttpMethod.swift in Sources */,
 				8C6E23A821CBC09600EA241E /* AlamofireNetworkDataTask.swift in Sources */,
 				8C6E23C021CBC09700EA241E /* HttpHeader.swift in Sources */,

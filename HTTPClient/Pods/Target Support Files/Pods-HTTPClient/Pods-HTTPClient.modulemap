@@ -1,0 +1,6 @@
+framework module Pods_HTTPClient {
+  umbrella header "Pods-HTTPClient-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -5,7 +5,7 @@ final class RequestBuilderImpl: RequestBuilder {
     
     // MARK: - Init
     
-    init(commonHeadersProvider: CommonHeadersProvider)
+    init(commonHeadersProvider: CommonHeadersProvider = CommonHeadersProviderImpl())
     {
         self.commonHeadersProvider = commonHeadersProvider
     }
@@ -54,10 +54,14 @@ final class RequestBuilderImpl: RequestBuilder {
             return .error(.apiClientError(.cantBuildUrl(.cantInitializeUrl)))
         }
         
+        var headers = [HttpHeader]()
+        headers.append(contentsOf: commonHeadersProvider.headersForRequest(request: request))
+        headers.append(contentsOf: request.headers)
+        
         return .data(
             RequestData(
                 url: url,
-                headers: commonHeadersProvider.headersForRequest(request: request)
+                headers: headers
             )
         )
     }

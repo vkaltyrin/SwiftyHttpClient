@@ -1,6 +1,6 @@
 import Foundation
 
-final class URLSessionRequestDispatcher: RequestDispatcher {
+public final class URLSessionRequestDispatcher: RequestDispatcher {
     
     // MARK: - Dependencies
     private let session: URLSession
@@ -14,7 +14,7 @@ final class URLSessionRequestDispatcher: RequestDispatcher {
     
     // MARK: - RequestDispatcher
     @discardableResult
-    func send<R: ApiRequest>(
+    public func send<R: ApiRequest>(
         _ request: R,
         urlRequest: URLRequest,
         completion: @escaping DataResult<R.Result, RequestError<R.ErrorResponse>>.Completion)
@@ -42,12 +42,14 @@ final class URLSessionRequestDispatcher: RequestDispatcher {
                 data: data,
                 result: result
             )
+            
             self?.responseDecoder.decode(
                 response: responseResult,
                 for: request,
                 completion: completion
             )
         }
+        task.resume()
        
         return URLSessionNetworkDataTask(task: task)
     }

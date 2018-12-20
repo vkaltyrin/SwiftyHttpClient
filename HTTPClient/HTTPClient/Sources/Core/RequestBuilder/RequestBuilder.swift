@@ -1,6 +1,6 @@
 import Foundation
 
-protocol RequestBuilder {
+public protocol RequestBuilder {
     func buildUrlRequest<R: ApiRequest>(from request: R)
         -> DataResult<URLRequest, RequestError<R.ErrorResponse>>
     
