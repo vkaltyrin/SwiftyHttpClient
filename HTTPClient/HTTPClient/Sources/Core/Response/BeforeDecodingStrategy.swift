@@ -1,7 +1,7 @@
 import Foundation
 
 /*
- Use BeforeDecodingResponseHandler to customize decoding behaviour.
+ Use BeforeDecodingStrategy to customize decoding behaviour.
  */
 public protocol BeforeDecodingStrategy {
     func process<R: ApiRequest>(

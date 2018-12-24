@@ -27,7 +27,7 @@ public protocol ApiRequest {
 
 public extension ApiRequest {
     var cachePolicy: RequestCachePolicy {
-        return .useProtocolCachePolicy
+        return .returnCacheDataElseLoad
     }
     
     var headers: [HttpHeader] { return [] }

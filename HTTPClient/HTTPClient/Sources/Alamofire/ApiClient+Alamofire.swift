@@ -28,7 +28,7 @@ final class HTTPClientFactory {
             ),
             uploader: AlamofireBackgroundUploader(),
             operationBuilder: AlamofireUploadMultipartFormDataOperationBuilder(),
-            sendQueue: DispatchQueue.global()
+            logger: DefaultLogger()
         )
     }
 }

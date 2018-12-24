@@ -3,30 +3,23 @@ import HTTPClient
 
 class ViewController: UIViewController {
     
-    let httpClient = HTTPClientFactoryImpl().githubHTTPClient()
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var textView: UITextView!
+    
+    var httpClient: HTTPClient?
     let githubAPI = GithubAPI()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let request = githubAPI.searchRepositoriesRequest(query: "swift", sort: .stars, order: .desc)
-//        httpClient.send(request: request) { result in
-//            result.onData { response in
-//
-//            }
-//            result.onError { [weak self] error in
-//                self?.showError(error: error)
-//            }
-//        }
-        let request = githubAPI.basicAuthorization(username: "vkasci@gmail.com", password: "9Carman33")
-        httpClient.send(request: request) { [weak self] result in
-            result.onData { response in
-                
-            }
-            result.onError { error in
-                
-            }
+        passwordTextField.isSecureTextEntry = true
+        
+        let logger = LoggerImpl { [weak self] cUrl in
+            self?.log(cUrl)
         }
+        httpClient = HTTPClientFactoryImpl().githubHTTPClient(logger: logger)
     }
     
     private func showError(error: RequestError<GithubErrorResponse>) {
@@ -42,4 +35,34 @@ class ViewController: UIViewController {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         self.present(alert, animated: true, completion: nil)
     }
+    
+    @IBAction func onLoginTap(_ sender: Any) {
+        guard let username = usernameTextField.text, let password = passwordTextField.text else {
+            return
+        }
+        
+        let request = githubAPI.basicAuthorization(username: username, password: password)
+        httpClient?.send(request: request) { [weak self] result in
+            result.onData { [weak self] response in
+                self?.log(response)
+            }
+            result.onError { error in
+                switch error {
+                case .apiError(let apiError):
+                    self?.log(apiError)
+                default:
+                    self?.log("Error. Debug for investigation.")
+                }
+            }
+        }
+    }
+    
+    private func log(_ text: String) {
+        textView.text.append(contentsOf: "\n\(text)")
+    }
+    
+    private func log(_ encodable: Encodable) {
+        log(encodable.log)
+    }
+    
 }

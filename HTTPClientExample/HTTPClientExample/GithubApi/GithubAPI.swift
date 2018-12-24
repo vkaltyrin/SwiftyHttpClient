@@ -25,8 +25,8 @@ final class GithubCommonHeaderProvider: CommonHeadersProvider {
 /*
  This struct implements the Github API specification of errors. Look at https://developer.github.com/v3/#client-errors for details.
  */
-struct GithubErrorResponse: Decodable {
-    struct Error: Decodable {
+struct GithubErrorResponse: Codable {
+    struct Error: Codable {
         let resource: String
         let field: String
         let code: String
@@ -41,18 +41,6 @@ struct GithubErrorResponse: Decodable {
  For now, just write it manually.
  */
 final class GithubAPI {
-    func searchRepositoriesRequest(
-        query: String,
-        sort: GithubSearchRepositoriesRequest.SortKey,
-        order: GithubSearchRepositoriesRequest.OrderKey
-        ) -> GithubSearchRepositoriesRequest {
-        return GithubSearchRepositoriesRequest(
-            query: query,
-            sort: sort,
-            order: order
-        )
-    }
-    
     func basicAuthorization(username: String, password: String) -> GithubBasicAuthorizationRequest {
         return GithubBasicAuthorizationRequest(username: username, password: password)
     }

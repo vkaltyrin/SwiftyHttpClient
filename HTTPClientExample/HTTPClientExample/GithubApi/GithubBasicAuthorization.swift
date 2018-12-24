@@ -42,7 +42,7 @@ extension GithubBasicAuthorizationRequest: GithubRequest {
     }
 }
 
-struct GithubBasicAuthorizationResponse: Decodable {
+struct GithubBasicAuthorizationResponse: Codable {
     let login: String
     let id: Int
     let name: String

@@ -2,13 +2,15 @@ import Foundation
 import HTTPClient
 
 protocol HTTPClientFactory: class {
-    func githubHTTPClient() -> HTTPClient
+    func githubHTTPClient(logger: Logger) -> HTTPClient
 }
 
 final class HTTPClientFactoryImpl: HTTPClientFactory {
-    func githubHTTPClient() -> HTTPClient {
+    func githubHTTPClient(logger: Logger) -> HTTPClient {
         return HTTPClientImpl(
             commonHeadersProvider: GithubCommonHeaderProvider(),
-            beforeDecodingStrategy: GithubResponseStrategy())
+            beforeDecodingStrategy: GithubResponseStrategy(),
+            logger: logger
+        )
     }
 }
