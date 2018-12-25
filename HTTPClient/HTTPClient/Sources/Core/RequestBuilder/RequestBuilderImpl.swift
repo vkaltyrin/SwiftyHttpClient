@@ -110,8 +110,9 @@ private extension URLRequest {
         
         let shouldSendParametersInUrl = request.method == .get || request.method == .head
         if shouldSendParametersInUrl {
-            let queryString = encodedSortedByKeyStringFrom(dictionary: parameters)
-            urlRequest.url = URL(string: url.absoluteString + "?" + queryString)
+            let queryString = encodedSortedByKeyStringFrom(dictionary: request.params)
+            let postfix = queryString.isEmpty ? "" : "?\(queryString)"
+            urlRequest.url = URL(string: "\(url.absoluteString)\(postfix)")
         } else {
             do {
                 urlRequest.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
@@ -130,7 +131,7 @@ private extension URLRequest {
         fromTreeParameters treeParameters: [String: Any],
         keyPrefix: String?)
     {
-        for (key, value) in treeParameters {
+        treeParameters.forEach { key, value in
             let nextKeyPrefix: String
             
             if let keyPrefix = keyPrefix {
@@ -140,15 +141,15 @@ private extension URLRequest {
             }
             
             if let array = value as? [Any] {
-                for (index, item) in array.enumerated() {
-                    appendFlatternedParameters(
+                array.enumerated().forEach { index, item in
+                    self.appendFlatternedParameters(
                         &flatternedParameters,
                         fromTreeParameters: [String(index): item],
                         keyPrefix: nextKeyPrefix
                     )
                 }
             } else if let dictionary = value as? [String: Any] {
-                appendFlatternedParameters(
+                self.appendFlatternedParameters(
                     &flatternedParameters,
                     fromTreeParameters: dictionary,
                     keyPrefix: nextKeyPrefix
@@ -163,7 +164,7 @@ private extension URLRequest {
         var result = ""
         let sortedKeys = dictionary.keys.sorted(by: <)
         
-        for key in sortedKeys {
+        sortedKeys.forEach { key in
             if let value = dictionary[key] as? String {
                 if !result.isEmpty {
                     result+="&"
@@ -175,6 +176,7 @@ private extension URLRequest {
                 result += "\(encodedKey)=\(encodedValue)"
             }
         }
+
         return result
     }
 }

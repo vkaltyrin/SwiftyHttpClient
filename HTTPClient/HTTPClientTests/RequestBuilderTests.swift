@@ -1,27 +1,7 @@
 import XCTest
 import Quick
 import Nimble
-@testable import Mercury
-
-private struct TestSuccessResponse: Decodable {}
-private struct TestFailureResponse: Decodable {}
-
-private struct TestApiRequest: ApiRequest {
-    var method: HttpMethod
-    var endpoint: String
-    var path: String
-    var params: [String : Any]
-    
-    typealias Result = TestSuccessResponse
-    typealias ErrorResponse = TestFailureResponse
-    
-    init(method: HttpMethod, endpoint: String, path: String, params: [String : Any]) {
-        self.method = method
-        self.endpoint = endpoint
-        self.path = path
-        self.params = params
-    }
-}
+@testable import HTTPClient
 
 class RequestBuilderSpec: QuickSpec {
     var requestBuilder: RequestBuilder!
@@ -33,45 +13,203 @@ class RequestBuilderSpec: QuickSpec {
             )
         }
         
-        describe("Request") {
-            context("when it's defined with post http method") {
-                it("is built correctly") {
-                    let request = TestApiRequest(
-                        method: .post,
-                        endpoint: "http://google.com",
-                        path: "/user/auth",
-                        params: [:]
-                    )
-                    
-                    let result = self.requestBuilder.buildUrlRequest(from: request)
-                    let urlRequest = try! URLRequest(url: "http://google.com/user/auth", method: .post)
-                    expect(result).to(beData { value in
-                        expect(value.url?.absoluteString).to(equal(urlRequest.url?.absoluteString))
-                    })
+        describe("http://api.github.com/gists/1/comments") {
+            context("PUT, POST, OPTIONS, PATCH, DELETE, TRACE, CONNECT") {
+                
+                let methods: [HttpMethod] = [
+                    .put,
+                    .post,
+                    .options,
+                    .patch,
+                    .delete,
+                    .trace,
+                    .connect
+                ]
+                
+                it("creates a valid request") {
+                    methods.forEach {
+                        self.validateRequest(
+                            method: $0,
+                            endpoint: "http://api.github.com",
+                            path: "/gists/1/comments",
+                            params: ["body" : "Just commenting for the sake of commenting"],
+                            headers: [],
+                            httpBody: nil,
+                            cachePolicy: .useProtocolCachePolicy
+                        )
+                    }
+                }
+                
+                context("Contains header") {
+                    it("creates a valid request") {
+                        methods.forEach {
+                            self.validateRequest(
+                                method: $0,
+                                endpoint: "http://api.github.com",
+                                path: "/gists/1/comments",
+                                params: ["body" : "Just commenting for the sake of commenting"],
+                                headers: [
+                                    HttpHeader(name: "Accept", value: "application/vnd.github.v3+json")
+                                ],
+                                httpBody: nil,
+                                cachePolicy: .useProtocolCachePolicy
+                            )
+                        }
+                    }
+                }
+                
+                context("Contains array in parameters") {
+                    it("creates a valid request") {
+                        methods.forEach {
+                            self.validateRequest(
+                                method: $0,
+                                endpoint: "http://api.github.com",
+                                path: "/repos/google/earlgrey/topic",
+                                params: ["names" : [
+                                    "octocat",
+                                    "atom",
+                                    "electron",
+                                    "API"
+                                    ]
+                                ],
+                                headers: [
+                                    HttpHeader(name: "Accept", value: "application/vnd.github.v3+json")
+                                ],
+                                httpBody: nil,
+                                cachePolicy: .useProtocolCachePolicy,
+                                expectedParams: [
+                                    "names[0]" : "octocat",
+                                    "names[1]" : "atom",
+                                    "names[2]" : "electron",
+                                    "names[3]" : "API"
+                                ]
+                            )
+                        }
+                    }
+                }
+                
+            }
+            
+            context("HEAD, GET") {
+                let methods: [HttpMethod] = [
+                    .head,
+                    .get
+                ]
+                
+                context("Parameters are empty") {
+                    it("creates a valid request") {
+                        methods.forEach {
+                            self.validateRequest(
+                                method: $0,
+                                endpoint: "http://api.github.com",
+                                path: "/gists/1/comments",
+                                params: [:],
+                                headers: [],
+                                httpBody: nil,
+                                cachePolicy: .useProtocolCachePolicy
+                            )
+                        }
+                    }
+                }
+                
+                context("Parameters are non empty") {
+                    it("creates a valid request") {
+                        methods.forEach {
+                            self.validateRequest(
+                                method: $0,
+                                endpoint: "http://api.github.com",
+                                path: "/gists/1/comments",
+                                params: [
+                                    "param1" : "value1",
+                                    "param2" : "value2"
+                                ],
+                                headers: [],
+                                httpBody: nil,
+                                cachePolicy: .useProtocolCachePolicy,
+                                expectedPostfix: "?param1=value1&param2=value2"
+                            )
+                        }
+                    }
+                }
+                
+                context("Contains header") {
+                    it("creates a valid request") {
+                        methods.forEach {
+                            self.validateRequest(
+                                method: $0,
+                                endpoint: "http://api.github.com",
+                                path: "/gists/1/comments",
+                                params: [:],
+                                headers: [
+                                    HttpHeader(name: "Accept", value: "application/vnd.github.v3+json"),
+                                    HttpHeader(name: "Auth", value: "token")
+                                ],
+                                httpBody: nil,
+                                cachePolicy: .useProtocolCachePolicy
+                            )
+                        }
+                    }
                 }
             }
         }
     }
-}
-
-func beData<T,E>(_ test: @escaping (T) -> Void = { _ in }) -> Predicate<DataResult<T, E>> {
-    return Predicate.define("be <data>") { expression, message in
-        if let actual = try expression.evaluate(),
-            case let .data(value) = actual {
-            test(value)
-            return PredicateResult(status: .matches, message: message)
+    
+    private func validateRequest(
+        method: HttpMethod,
+        endpoint: String,
+        path: String,
+        params: [String: Any],
+        headers: [HttpHeader],
+        httpBody: Data?,
+        cachePolicy: RequestCachePolicy,
+        expectedPostfix: String = "",
+        expectedParams: [String: Any]? = nil)
+    {
+        let request = TestApiRequest(
+            method: method,
+            endpoint: endpoint,
+            path: path,
+            params: params,
+            headers: headers,
+            httpBody: httpBody,
+            cachePolicy: cachePolicy
+        )
+        
+        let result = self.requestBuilder.buildUrlRequest(from: request)
+        let urlString = endpoint + path + expectedPostfix
+        var allHTTPHeaderFields: [String: String] = [:]
+        headers.forEach { header in
+            allHTTPHeaderFields[header.name] = header.value
         }
-        return PredicateResult(status: .fail, message: message)
-    }
-}
-
-func beError<T,E>(_ test: @escaping (E) -> Void = { _ in }) -> Predicate<DataResult<T, E>> {
-    return Predicate.define("be <error>") { expression, message in
-        if let actual = try expression.evaluate(),
-            case let .error(error) = actual {
-            test(error)
-            return PredicateResult(status: .matches, message: message)
-        }
-        return PredicateResult(status: .fail, message: message)
+        
+        expect(result).to(beData { urlRequest in
+            switch method {
+            case .get, .head:
+                let httpBodyMatcher = httpBody != nil ? equal(httpBody) : beNil()
+                expect(urlRequest.httpBody).to(httpBodyMatcher)
+            default:
+                if
+                    let body = urlRequest.httpBody,
+                    let requestJsonObject = try? JSONSerialization.jsonObject(
+                        with: body,
+                        options: JSONSerialization.ReadingOptions.allowFragments),
+                    let requestJson = requestJsonObject as? [String: Any]
+                {
+                    let dictionary: NSDictionary
+                    if let toEqualParams = expectedParams {
+                        dictionary = NSDictionary(dictionary: toEqualParams)
+                    } else {
+                        dictionary = NSDictionary(dictionary: params)
+                    }
+                    expect(NSDictionary(dictionary: requestJson))
+                        .to(equal(NSDictionary(dictionary: dictionary)))
+                }
+            }
+            
+            expect(urlRequest.url?.absoluteString).to(equal(urlString))
+            expect(urlRequest.httpMethod).to(equal(method.value))
+            expect(urlRequest.allHTTPHeaderFields).to(equal(allHTTPHeaderFields))
+            expect(urlRequest.cachePolicy).to(equal(cachePolicy.toNSURLRequestCachePolicy))
+        })
     }
 }
