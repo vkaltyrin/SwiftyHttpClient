@@ -1,5 +1,6 @@
 import Foundation
 import Alamofire
+import HTTPClient
 
 extension Alamofire.Result {
     func toGenericResult() -> GenericResult<Value> {

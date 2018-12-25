@@ -1,5 +1,6 @@
 import Foundation
 import Alamofire
+import HTTPClient
 
 public extension HttpMethod {
     var toAlamofireMethod: Alamofire.HTTPMethod {

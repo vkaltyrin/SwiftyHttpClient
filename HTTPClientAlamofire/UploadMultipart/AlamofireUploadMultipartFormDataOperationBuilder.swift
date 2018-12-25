@@ -1,4 +1,5 @@
 import Foundation
+import HTTPClient
 
 final class AlamofireUploadMultipartFormDataOperationBuilder: UploadMultipartFormDataRequestOperationBuilder {
     

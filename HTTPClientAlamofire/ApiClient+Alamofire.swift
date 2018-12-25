@@ -1,8 +1,9 @@
 import Foundation
+import HTTPClient
 
-final class HTTPClientFactory {
+public final class HTTPClientFactory {
     
-    class func HTTPClient(
+    public class func HTTPClient(
         commonHeadersProvider: CommonHeadersProvider,
         responseDecoder: ResponseDecoder
         ) -> HTTPClient {
@@ -13,7 +14,7 @@ final class HTTPClientFactory {
         )
     }
     
-    class func HTTPClient(
+    public class func HTTPClient(
         requestRetrier: RequestRetrier,
         commonHeadersProvider: CommonHeadersProvider,
         responseDecoder: ResponseDecoder

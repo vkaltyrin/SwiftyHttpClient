@@ -1,18 +1,22 @@
 import Foundation
 
-final class RequestBuilderImpl: RequestBuilder {
+public final class RequestBuilderImpl: RequestBuilder {
     private let commonHeadersProvider: CommonHeadersProvider
     
     // MARK: - Init
     
-    init(commonHeadersProvider: CommonHeadersProvider = CommonHeadersProviderImpl())
+    public convenience init() {
+        self.init(commonHeadersProvider: CommonHeadersProviderImpl())
+    }
+    
+    public init(commonHeadersProvider: CommonHeadersProvider)
     {
         self.commonHeadersProvider = commonHeadersProvider
     }
     
     // MARK: - ApiRequest
     
-    func buildUrlRequest<R: ApiRequest>(from request: R)
+    public func buildUrlRequest<R: ApiRequest>(from request: R)
         -> DataResult<URLRequest, RequestError<R.ErrorResponse>>
     {
         switch buildRequestData(from: request) {
@@ -31,7 +35,7 @@ final class RequestBuilderImpl: RequestBuilder {
         }
     }
     
-    func buildUploadRequest<R: UploadMultipartFormDataRequest>(from request: R)
+    public func buildUploadRequest<R: UploadMultipartFormDataRequest>(from request: R)
         -> DataResult<R, RequestError<R.ErrorResponse>>
     {
         switch buildRequestData(from: request) {

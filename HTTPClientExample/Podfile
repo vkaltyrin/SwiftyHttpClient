@@ -6,4 +6,5 @@ target 'HTTPClientExample' do
   use_frameworks!
 
 	pod 'HTTPClient', :path => '../HTTPClient/HTTPClient/Sources'
+	pod 'HTTPClientAlamofire', :path => '../HTTPClientAlamofire'
 end
