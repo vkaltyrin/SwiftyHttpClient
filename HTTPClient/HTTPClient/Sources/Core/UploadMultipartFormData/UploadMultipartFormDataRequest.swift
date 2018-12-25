@@ -9,4 +9,7 @@ public protocol UploadMultipartFormDataRequest: ApiRequest {
     var name: String { get }
     var fileName: String { get }
     var mimeType: String { get }
+    
+    var dataProvider: DataProvider { get }
+    var onProgressChange: ((Progress) -> ())? { get }
 }

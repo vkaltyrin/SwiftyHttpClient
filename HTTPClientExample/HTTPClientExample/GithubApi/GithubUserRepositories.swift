@@ -1,20 +1,28 @@
 import Foundation
 import HTTPClient
 
-struct GithubBasicAuthorizationRequest {
+struct GithubUserRepositoriesRequest {
+    enum Visibility: String {
+        case all
+        case `public`
+        case `private`
+    }
+    
     // MARK: - Parameters
     private let username: String
     private let password: String
+    private let visibility: Visibility
     
     // MARK: - Init
-    init(username: String, password: String) {
+    init(username: String, password: String, visibility: Visibility) {
         self.username = username
         self.password = password
+        self.visibility = visibility
     }
 }
 
-extension GithubBasicAuthorizationRequest: GithubRequest {
-    typealias Result = GithubBasicAuthorizationResponse
+extension GithubUserRepositoriesRequest: GithubRequest {
+    typealias Result = [GithubRepository]
     
     /*
      Look at https://developer.github.com/v3/auth/#via-username-and-password
@@ -30,11 +38,11 @@ extension GithubBasicAuthorizationRequest: GithubRequest {
     }
     
     var method: HttpMethod {
-        return .post
+        return .get
     }
     
     var path: String {
-        return "/user"
+        return "/user/repos"
     }
     
     var params: [String : Any] {
@@ -42,9 +50,7 @@ extension GithubBasicAuthorizationRequest: GithubRequest {
     }
 }
 
-struct GithubBasicAuthorizationResponse: Codable {
-    let login: String
-    let id: Int
+struct GithubRepository: Codable {
     let name: String
-    let url: String
+    let fork: Bool
 }

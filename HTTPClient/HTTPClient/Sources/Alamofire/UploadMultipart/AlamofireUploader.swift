@@ -1,7 +1,7 @@
 import Foundation
 import Alamofire
 
-public protocol Uploader: class {
+public protocol AlamofireUploader: class {
     func upload(
         multipartFormData: @escaping (MultipartFormData) -> Void,
         to url: URLConvertible,

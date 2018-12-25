@@ -10,9 +10,6 @@ public final class URLSessionRequestDispatcher: RequestDispatcher {
     init(session: URLSession, responseDecoder: ResponseDecoder) {
         self.session = session
         self.responseDecoder = responseDecoder
-        
-//        session.configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
-//        session.configuration.timeoutIntervalForRequest = 30
     }
     
     // MARK: - RequestDispatcher
@@ -23,7 +20,6 @@ public final class URLSessionRequestDispatcher: RequestDispatcher {
         completion: @escaping DataResult<R.Result, RequestError<R.ErrorResponse>>.Completion)
         -> NetworkDataTask?
     {
-        //urlRequest.cachePolicy = URLRequest.CachePolicy.reloadIgnoringLocalCacheData
         let task = session.dataTask(with: urlRequest) { [weak self] data, response, error in
             guard let httpUrlResponse = response as? HTTPURLResponse else {
                 completion(.error(RequestError.apiClientError(.decodingFailure)))

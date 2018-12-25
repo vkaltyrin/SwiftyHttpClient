@@ -10,7 +10,7 @@ final class AlamofireUploadMultipartFormDataRequestOperation<R: UploadMultipartF
     // MARK: - Dependencies
     private let request: R
     private let dataProvider: DataProvider
-    private let uploader: Uploader
+    private let uploader: AlamofireUploader
     private let onProgressChange: ((Progress) -> ())?
     private let completion: DataResult<R.Result, RequestError<R.ErrorResponse>>.Completion
     
@@ -19,7 +19,7 @@ final class AlamofireUploadMultipartFormDataRequestOperation<R: UploadMultipartF
     init(
         request: R,
         dataProvider: DataProvider,
-        uploader: Uploader,
+        uploader: AlamofireUploader,
         onProgressChange: ((Progress) -> ())?,
         completion: @escaping DataResult<R.Result, RequestError<R.ErrorResponse>>.Completion
         )

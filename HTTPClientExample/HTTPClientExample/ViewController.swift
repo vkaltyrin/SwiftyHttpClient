@@ -9,7 +9,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     
     var httpClient: HTTPClient?
-    let githubAPI = GithubAPI()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +40,11 @@ class ViewController: UIViewController {
             return
         }
         
-        let request = githubAPI.basicAuthorization(username: username, password: password)
+        let request = GithubUserRepositoriesRequest(
+            username: username,
+            password: password,
+            visibility: .private
+        )
         httpClient?.send(request: request) { [weak self] result in
             result.onData { [weak self] response in
                 self?.log(response)

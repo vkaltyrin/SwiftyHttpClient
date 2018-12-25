@@ -6,33 +6,32 @@ public final class HTTPClientImpl: HTTPClient {
     private let requestBuilder: RequestBuilder
     private let requestRetrier: RequestRetrier
     private let requestDispatcher: RequestDispatcher
-    private let uploader: Uploader
     private let operationBuilder: UploadMultipartFormDataRequestOperationBuilder
     private let logger: Logger
-    private let sendQueue: DispatchQueue
+    private let requestQueue: DispatchQueue
+    private let responseQueue: DispatchQueue
     
     // MARK: - Init
     public init(requestBuilder: RequestBuilder,
                 requestRetrier: RequestRetrier,
                 requestDispatcher: RequestDispatcher,
-                uploader: Uploader,
                 operationBuilder: UploadMultipartFormDataRequestOperationBuilder,
                 logger: Logger,
-                sendQueue: DispatchQueue)
+                requestQueue: DispatchQueue,
+                responseQueue: DispatchQueue)
     {
         self.requestBuilder = requestBuilder
         self.requestRetrier = requestRetrier
         self.requestDispatcher = requestDispatcher
-        self.uploader = uploader
         self.operationBuilder = operationBuilder
         self.logger = logger
-        self.sendQueue = sendQueue
+        self.requestQueue = requestQueue
+        self.responseQueue = responseQueue
     }
     
     public convenience init(requestBuilder: RequestBuilder,
                             requestRetrier: RequestRetrier,
                             requestDispatcher: RequestDispatcher,
-                            uploader: Uploader,
                             operationBuilder: UploadMultipartFormDataRequestOperationBuilder,
                             logger: Logger)
     {
@@ -40,10 +39,10 @@ public final class HTTPClientImpl: HTTPClient {
             requestBuilder: requestBuilder,
             requestRetrier: requestRetrier,
             requestDispatcher: requestDispatcher,
-            uploader: uploader,
             operationBuilder: operationBuilder,
             logger: logger,
-            sendQueue: DispatchQueue.global(qos: .utility)
+            requestQueue: DispatchQueue.global(qos: .utility),
+            responseQueue: DispatchQueue.main
         )
     }
     
@@ -55,10 +54,10 @@ public final class HTTPClientImpl: HTTPClient {
             requestBuilder: RequestBuilderImpl(commonHeadersProvider: commonHeadersProvider),
             requestRetrier: RequestRetrierImpl(),
             requestDispatcher: requestDispatcher,
-            uploader: AlamofireBackgroundUploader(),
-            operationBuilder: AlamofireUploadMultipartFormDataOperationBuilder(),
+            operationBuilder: URLSessionUploadMultipartFormDataRequestOperationBuilder(),
             logger: logger,
-            sendQueue: DispatchQueue.global(qos: .utility)
+            requestQueue: DispatchQueue.global(qos: .utility),
+            responseQueue: DispatchQueue.main
         )
     }
     
@@ -103,47 +102,55 @@ public final class HTTPClientImpl: HTTPClient {
         completion: @escaping DataResult<R.Result, RequestError<R.ErrorResponse>>.Completion)
         -> NetworkDataTask?
     {
-        sendQueue.async {
+        requestQueue.async {
             self.send(request: request, completion: completion)
         }
         
         return networkDataTask
     }
     
-    public func upload<R: UploadMultipartFormDataRequest>(
-        dataProvider: DataProvider,
+    @discardableResult
+    public func send<R: UploadMultipartFormDataRequest>(
         request: R,
-        onProgressChange: ((Progress) -> ())?,
         completion: @escaping DataResult<R.Result, RequestError<R.ErrorResponse>>.Completion)
         -> NetworkDataTask?
     {
-        let preparedRequestResult = requestBuilder.buildUploadRequest(from: request)
-        
-        switch preparedRequestResult {
-        case .error(let error):
-            completion(.error(error))
-            return nil
-        case .data(let preparedRequest):
-            let uploadOperation = operationBuilder.buildOperation(
-                request: preparedRequest,
-                dataProvider: dataProvider,
-                uploader: uploader,
-                onProgressChange: onProgressChange,
-                completion: completion
-            )
-
-            uploadQueue.addOperation(uploadOperation)
-
-            return OperationDataTask(operation: uploadOperation)
-        }
+        return self.upload(request: request, completion: completion)
     }
     
     // MARK: - Private
     private let uploadQueue: OperationQueue = {
-        let queue = OperationQueue()
-        queue.qualityOfService = .utility
-        return queue
+        let requestQueue = OperationQueue()
+        requestQueue.qualityOfService = .utility
+        return requestQueue
     }()
+    
+    func upload<R: UploadMultipartFormDataRequest>(
+        request: R,
+        completion: @escaping DataResult<R.Result, RequestError<R.ErrorResponse>>.Completion)
+        -> NetworkDataTask?
+    {
+        requestQueue.async {
+            let preparedRequestResult = self.requestBuilder.buildUploadRequest(from: request)
+            
+            switch preparedRequestResult {
+            case .error(let error):
+                completion(.error(error))
+            case .data(let preparedRequest):
+                let uploadOperation = self.operationBuilder.buildOperation(
+                    request: preparedRequest,
+                    dataProvider: request.dataProvider,
+                    onProgressChange: request.onProgressChange,
+                    completion: completion
+                )
+                
+                self.uploadQueue.addOperation(uploadOperation)
+                self.networkDataTask = OperationDataTask(operation: uploadOperation)
+            }
+        }
+        
+        return networkDataTask
+    }
     
     private var networkDataTask: NetworkDataTask?
     
@@ -164,8 +171,8 @@ public final class HTTPClientImpl: HTTPClient {
             logger.log(cUrl: urlRequest.cURL)
             
             networkDataTask = requestDispatcher.send(request, urlRequest: urlRequest) { result in
-                result.onData { data in
-                    DispatchQueue.main.async {
+                result.onData { [weak self] data in
+                    self?.responseQueue.async {
                         completion(.data(data))
                     }
                 }
@@ -178,7 +185,7 @@ public final class HTTPClientImpl: HTTPClient {
                             completion: completion
                         )
                     } else {
-                        DispatchQueue.main.async {
+                        self?.responseQueue.async {
                             completion(.error(networkRequestError))
                         }
                     }

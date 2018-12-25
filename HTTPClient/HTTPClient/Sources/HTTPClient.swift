@@ -8,10 +8,8 @@ public protocol HTTPClient: class {
         -> NetworkDataTask?
     
     @discardableResult
-    func upload<R: UploadMultipartFormDataRequest>(
-        dataProvider: DataProvider,
+    func send<R: UploadMultipartFormDataRequest>(
         request: R,
-        onProgressChange: ((Progress) -> ())?,
         completion: @escaping DataResult<R.Result, RequestError<R.ErrorResponse>>.Completion)
         -> NetworkDataTask?
 }

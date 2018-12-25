@@ -35,13 +35,3 @@ struct GithubErrorResponse: Codable {
     let message: String
     let errors: [Error]
 }
-
-/*
- Currently this class is written manually, but there is a plan to generate it using the Sourcery.
- For now, just write it manually.
- */
-final class GithubAPI {
-    func basicAuthorization(username: String, password: String) -> GithubBasicAuthorizationRequest {
-        return GithubBasicAuthorizationRequest(username: username, password: password)
-    }
-}

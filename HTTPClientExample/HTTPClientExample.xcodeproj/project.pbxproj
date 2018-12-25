@@ -18,7 +18,7 @@
 		8C6E242021CBDE3500EA241E /* HTTPClientFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6E241B21CBDE3500EA241E /* HTTPClientFactory.swift */; };
 		8C6E242121CBDE3500EA241E /* GithubResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6E241D21CBDE3500EA241E /* GithubResponseHandler.swift */; };
 		8C6E242221CBDE3500EA241E /* GithubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6E241E21CBDE3500EA241E /* GithubAPI.swift */; };
-		8C6E242521CBE6DC00EA241E /* GithubBasicAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6E242421CBE6DC00EA241E /* GithubBasicAuthorization.swift */; };
+		8C6E242521CBE6DC00EA241E /* GithubUserRepositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6E242421CBE6DC00EA241E /* GithubUserRepositories.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +36,7 @@
 		8C6E241B21CBDE3500EA241E /* HTTPClientFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClientFactory.swift; sourceTree = "<group>"; };
 		8C6E241D21CBDE3500EA241E /* GithubResponseHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubResponseHandler.swift; sourceTree = "<group>"; };
 		8C6E241E21CBDE3500EA241E /* GithubAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubAPI.swift; sourceTree = "<group>"; };
-		8C6E242421CBE6DC00EA241E /* GithubBasicAuthorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubBasicAuthorization.swift; sourceTree = "<group>"; };
+		8C6E242421CBE6DC00EA241E /* GithubUserRepositories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubUserRepositories.swift; sourceTree = "<group>"; };
 		99CBE3181C58932AC12A65CA /* Pods_HTTPClientExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HTTPClientExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -109,7 +109,7 @@
 			children = (
 				8C6E241D21CBDE3500EA241E /* GithubResponseHandler.swift */,
 				8C6E241E21CBDE3500EA241E /* GithubAPI.swift */,
-				8C6E242421CBE6DC00EA241E /* GithubBasicAuthorization.swift */,
+				8C6E242421CBE6DC00EA241E /* GithubUserRepositories.swift */,
 			);
 			path = GithubApi;
 			sourceTree = "<group>";
@@ -238,7 +238,7 @@
 			files = (
 				8C6E242021CBDE3500EA241E /* HTTPClientFactory.swift in Sources */,
 				8C6E240C21CBDDAD00EA241E /* ViewController.swift in Sources */,
-				8C6E242521CBE6DC00EA241E /* GithubBasicAuthorization.swift in Sources */,
+				8C6E242521CBE6DC00EA241E /* GithubUserRepositories.swift in Sources */,
 				8C44EBAD21D11E8700F6807C /* LoggerImpl.swift in Sources */,
 				8C6E242121CBDE3500EA241E /* GithubResponseHandler.swift in Sources */,
 				8C44EB9F21D1166300F6807C /* EncodableExtension.swift in Sources */,

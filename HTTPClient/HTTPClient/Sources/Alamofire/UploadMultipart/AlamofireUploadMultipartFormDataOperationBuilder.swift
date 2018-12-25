@@ -1,10 +1,16 @@
 import Foundation
 
 final class AlamofireUploadMultipartFormDataOperationBuilder: UploadMultipartFormDataRequestOperationBuilder {
+    
+    private let uploader: AlamofireUploader
+    
+    init(uploader: AlamofireUploader) {
+        self.uploader = uploader
+    }
+    
     func buildOperation<R: UploadMultipartFormDataRequest>(
         request: R,
         dataProvider: DataProvider,
-        uploader: Uploader,
         onProgressChange: ((Progress) -> ())?,
         completion: @escaping DataResult<R.Result, RequestError<R.ErrorResponse>>.Completion
         ) -> Operation

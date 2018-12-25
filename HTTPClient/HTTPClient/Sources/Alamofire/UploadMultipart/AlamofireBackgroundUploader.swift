@@ -3,14 +3,14 @@ import Alamofire
 
 extension SessionManager {
     static let background: SessionManager = {
-        let configuration = URLSessionConfiguration.background(withIdentifier: "ru.eva.domclick.upload")
+        let configuration = URLSessionConfiguration.background(withIdentifier: "com.httpClient.uploader")
         configuration.httpAdditionalHeaders = SessionManager.defaultHTTPHeaders
         
         return SessionManager(configuration: configuration)
     }()
 }
 
-final class AlamofireBackgroundUploader: Uploader {
+final class AlamofireBackgroundUploader: AlamofireUploader {
     
     func upload(
         multipartFormData: @escaping (MultipartFormData) -> Void,
