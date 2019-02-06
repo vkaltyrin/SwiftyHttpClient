@@ -19,8 +19,7 @@ public final class ResponseDecoderImpl: ResponseDecoder {
         response: ResponseResult<Data>,
         for request: R,
         completion: @escaping DataResult<R.Result, RequestError<R.ErrorResponse>>.Completion
-        )
-    {
+        ) {
         if let result = beforeDecodingStrategy.process(response: response, for: request) {
             completion(result)
             return

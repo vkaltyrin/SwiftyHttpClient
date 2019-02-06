@@ -6,6 +6,6 @@ public extension ApiRequest {
     }
     
     func fullQueryPath() -> String {
-        return "\(endpoint)\(normalizedQueryPath())"
+        return "\(basePath)\(normalizedQueryPath())"
     }
 }

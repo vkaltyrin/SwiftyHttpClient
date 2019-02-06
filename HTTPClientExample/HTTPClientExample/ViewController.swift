@@ -45,6 +45,7 @@ class ViewController: UIViewController {
             password: password,
             visibility: .private
         )
+
         httpClient.send(request: request) { [weak self] result in
             result.onData { [weak self] response in
                 self?.log(response)

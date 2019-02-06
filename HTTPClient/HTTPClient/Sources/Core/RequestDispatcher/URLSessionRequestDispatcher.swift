@@ -18,8 +18,7 @@ public final class URLSessionRequestDispatcher: RequestDispatcher {
         _ request: R,
         urlRequest: URLRequest,
         completion: @escaping DataResult<R.Result, RequestError<R.ErrorResponse>>.Completion)
-        -> NetworkDataTask?
-    {
+        -> NetworkDataTask? {
         let task = session.dataTask(with: urlRequest) { [weak self] data, response, error in
             guard let httpUrlResponse = response as? HTTPURLResponse else {
                 completion(.error(RequestError.apiClientError(.decodingFailure)))

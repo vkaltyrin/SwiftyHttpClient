@@ -9,16 +9,14 @@ public final class RequestBuilderImpl: RequestBuilder {
         self.init(commonHeadersProvider: CommonHeadersProviderImpl())
     }
     
-    public init(commonHeadersProvider: CommonHeadersProvider)
-    {
+    public init(commonHeadersProvider: CommonHeadersProvider) {
         self.commonHeadersProvider = commonHeadersProvider
     }
     
     // MARK: - ApiRequest
     
     public func buildUrlRequest<R: ApiRequest>(from request: R)
-        -> DataResult<URLRequest, RequestError<R.ErrorResponse>>
-    {
+        -> DataResult<URLRequest, RequestError<R.ErrorResponse>> {
         switch buildRequestData(from: request) {
         case .error(let error):
             return .error(error)
@@ -36,8 +34,7 @@ public final class RequestBuilderImpl: RequestBuilder {
     }
     
     public func buildUploadRequest<R: UploadMultipartFormDataRequest>(from request: R)
-        -> DataResult<R, RequestError<R.ErrorResponse>>
-    {
+        -> DataResult<R, RequestError<R.ErrorResponse>> {
         switch buildRequestData(from: request) {
         case .error(let error):
             return .error(error)
@@ -52,8 +49,7 @@ public final class RequestBuilderImpl: RequestBuilder {
     // MARK: - Private
     
     private func buildRequestData<R: ApiRequest>(from request: R)
-        -> DataResult<RequestData, RequestError<R.ErrorResponse>>
-    {
+        -> DataResult<RequestData, RequestError<R.ErrorResponse>> {
         guard let url = buildUrl(from: request) else {
             return .error(.apiClientError(.cantBuildUrl(.cantInitializeUrl)))
         }
@@ -71,13 +67,13 @@ public final class RequestBuilderImpl: RequestBuilder {
     }
     
     private func buildUrl<T: ApiRequest>(from request: T) -> URL? {
-        let endpointUrl = URL(string: request.endpoint)
+        let baseURL = URL(string: request.basePath)
         
         var pathComponents = [String]()
         pathComponents.append(request.path)
         
         let normalizedQueryPath = pathComponents.joined(separator: "/").normalizedQueryPath()
-        return URL(string: normalizedQueryPath, relativeTo: endpointUrl)
+        return URL(string: normalizedQueryPath, relativeTo: baseURL)
     }
 }
 
@@ -90,8 +86,7 @@ private extension URLRequest {
     func appendUrlRequestCommonProperties<R: ApiRequest>(
         from request: R,
         headers: [HttpHeader])
-        ->  URLRequest
-    {
+        ->  URLRequest {
         var urlRequest = self
         urlRequest.appendHttpHeaders(headers)
         urlRequest.httpMethod = request.method.value
@@ -102,8 +97,7 @@ private extension URLRequest {
     func appendUrlRequestParameters<R: ApiRequest>(
         from request: R,
         url: URL)
-        -> DataResult<URLRequest, RequestError<R.ErrorResponse>>
-    {
+        -> DataResult<URLRequest, RequestError<R.ErrorResponse>> {
         var urlRequest = self
         var parameters = [String: Any]()
         appendFlatternedParameters(&parameters, fromTreeParameters: request.params, keyPrefix: nil)
@@ -129,8 +123,7 @@ private extension URLRequest {
     private func appendFlatternedParameters(
         _ flatternedParameters: inout [String: Any],
         fromTreeParameters treeParameters: [String: Any],
-        keyPrefix: String?)
-    {
+        keyPrefix: String?) {
         treeParameters.forEach { key, value in
             let nextKeyPrefix: String
             

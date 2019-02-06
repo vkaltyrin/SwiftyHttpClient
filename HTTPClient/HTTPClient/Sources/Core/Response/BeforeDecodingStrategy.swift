@@ -14,8 +14,7 @@ public final class DefaultBeforeDecodingStrategy: BeforeDecodingStrategy {
     public func process<R: ApiRequest>(
         response: ResponseResult<Data>,
         for request: R
-        ) -> DataResult<R.Result, RequestError<R.ErrorResponse>>?
-    {
+        ) -> DataResult<R.Result, RequestError<R.ErrorResponse>>? {
         return nil
     }
 }

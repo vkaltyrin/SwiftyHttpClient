@@ -33,8 +33,7 @@ public final class HTTPClientImpl: HTTPClient {
                             requestRetrier: RequestRetrier,
                             requestDispatcher: RequestDispatcher,
                             operationBuilder: UploadMultipartFormDataRequestOperationBuilder,
-                            logger: Logger)
-    {
+                            logger: Logger) {
         self.init(
             requestBuilder: requestBuilder,
             requestRetrier: requestRetrier,
@@ -100,8 +99,7 @@ public final class HTTPClientImpl: HTTPClient {
     public func send<R: ApiRequest>(
         request: R,
         completion: @escaping DataResult<R.Result, RequestError<R.ErrorResponse>>.Completion)
-        -> NetworkDataTask?
-    {
+        -> NetworkDataTask? {
         requestQueue.async {
             self.send(request: request, completion: completion)
         }
@@ -113,8 +111,7 @@ public final class HTTPClientImpl: HTTPClient {
     public func send<R: UploadMultipartFormDataRequest>(
         request: R,
         completion: @escaping DataResult<R.Result, RequestError<R.ErrorResponse>>.Completion)
-        -> NetworkDataTask?
-    {
+        -> NetworkDataTask? {
         return self.upload(request: request, completion: completion)
     }
     
@@ -128,8 +125,7 @@ public final class HTTPClientImpl: HTTPClient {
     func upload<R: UploadMultipartFormDataRequest>(
         request: R,
         completion: @escaping DataResult<R.Result, RequestError<R.ErrorResponse>>.Completion)
-        -> NetworkDataTask?
-    {
+        -> NetworkDataTask? {
         requestQueue.async {
             let preparedRequestResult = self.requestBuilder.buildUploadRequest(from: request)
             

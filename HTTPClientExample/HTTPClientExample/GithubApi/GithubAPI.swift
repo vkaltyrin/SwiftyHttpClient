@@ -7,7 +7,7 @@ import HTTPClient
 protocol GithubRequest: ApiRequest where ErrorResponse == GithubErrorResponse {}
 
 extension GithubRequest {
-    var endpoint: String {
+    var basePath: String {
         return "https://api.github.com"
     }
 }

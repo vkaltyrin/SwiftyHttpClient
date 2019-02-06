@@ -46,7 +46,7 @@ extension GithubUserRepositoriesRequest: GithubRequest {
     }
     
     var params: [String : Any] {
-        return [:]
+        return ["visibility" : visibility.rawValue]
     }
 }
 
