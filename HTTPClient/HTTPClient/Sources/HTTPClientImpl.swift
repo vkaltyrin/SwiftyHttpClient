@@ -131,13 +131,19 @@ public final class HTTPClientImpl: HTTPClient {
             
             switch preparedRequestResult {
             case .error(let error):
-                completion(.error(error))
+                self.responseQueue.async {
+                    completion(.error(error))
+                }
             case .data(let preparedRequest):
                 let uploadOperation = self.operationBuilder.buildOperation(
                     request: preparedRequest,
                     dataProvider: request.dataProvider,
                     onProgressChange: request.onProgressChange,
-                    completion: completion
+                    completion: { [weak self] result in
+                        self?.responseQueue.async {
+                           completion(result)
+                        }
+                    }
                 )
                 
                 self.uploadQueue.addOperation(uploadOperation)
